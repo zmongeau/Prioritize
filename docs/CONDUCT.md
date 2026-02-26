@@ -42,13 +42,13 @@ Examples of unacceptable behavior include:
 
 ## Participation
 
-* Information will be communicated through the groupchat created at the start
+* Information will be communicated through the group chat created at the start
 * Full participation of everyone will be ensured by periodic check-ins
 * Members' strengths and interests will be honored by giving time and consideration to everyone's ideas
 
 ## Meeting Times and Locations
 
-* Times and locations of meetings will be decided in the groupchat
+* Times and locations of meetings will be decided in the group chat
 
 ## Agenda and Minutes/Notes
 
@@ -62,12 +62,12 @@ Examples of unacceptable behavior include:
 ## Conversational Courtesies
 
 * The team will encourage and reinforce active listening by taking the time to listen to what each group member has to say
-* Respectful dialogue, and not speaking over eachother
+* Respectful dialogue, and not speaking over each other
 
 ## Enforcement/Feedback
 
 * Team will enforce its rules within meetings and group chat
-* Feedback would be preferred to be given as a group 
+* Feedback would be preferred to be given as a group
 
 ## Enforcement Responsibilities
 
@@ -88,6 +88,9 @@ All community leaders are obligated to respect the privacy and security of the r
 ## Enforcement Guidelines
 
 Community leaders will follow these Community Impact Guidelines in determining the consequences for any action they deem in violation of this Code of Conduct:
+
+![Zachary Mongeau](./signatures/zmongeausignature.png)
+Zachary Mongeau
 
 ## Attribution
 
