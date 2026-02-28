@@ -87,6 +87,8 @@ Community leaders will follow these Community Impact Guidelines in determining t
 Zachary Mongeau
 ![Landen Sturgess](./signatures/lsturgessSignature.png)
 Landen Sturgess
+![Robert Stevens](./signatures/robbiestevenssignature.png)
+Robert Stevens
 
 ## Attribution
 
@@ -101,4 +103,5 @@ For answers to common questions about this code of conduct, see the FAQ at [http
 [Mozilla CoC]: https://github.com/mozilla/diversity
 [FAQ]: https://www.contributor-covenant.org/faq
 [translations]: https://www.contributor-covenant.org/translations
+
 
