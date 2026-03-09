@@ -18,8 +18,8 @@ Team Action (if any): Incentivise early completion of tasks.
 
 ## Observation 3
 
-Observation Statement:
+Observation Statement: Many people struggle to meet the deadline of their assignments due to working, either part time or full time
 
-Supporting Data:
+Supporting Data: Of the 19 responses received from our survey, 14 of them were from individuals who have a job while being a full time student. And of these 14, 10 of them have experienced missing assignment deadlines due to work.
 
-Team Action (if any):
+Team Action (if any): Send reminders to users when a deadline for their assignments is beginning to approach. The frequency of these reminders will be based on the oriority of the task set by the user
