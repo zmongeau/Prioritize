@@ -10,11 +10,11 @@ Team Action (if any): Possibly create a feature to show how said activities line
 
 ## Observation 2
 
-Observation Statement:
+Observation Statement: Many people procrastinate completing their tasks.
 
-Supporting Data:
+Supporting Data: Majority of survey participants selected that they complete their tasks on the due date or a few days before.
 
-Team Action (if any):
+Team Action (if any): Incentivise early completion of tasks.
 
 ## Observation 3
 
