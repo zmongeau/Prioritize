@@ -12,7 +12,7 @@ Engagement can be collected by monitoring the frequency of the app's usage by it
 
 ## Metric 3: Adoption
 
-Explanation
+Adoption can be collected through user sign in data, the number of first tasks created, and the number of first tasks completed. These numbers would only be collected as a whole because they are only collected when an account is created and when the first task is created and completed. This data can be collected through the backend, and can be used to see how many users are signing up for the app, and how many of those users are actually using the app by creating and completing tasks. This will give us a good idea of how many users are adopting the app, and how many of those users are actually using it.
 
 ## Metric 4: Retention
 
