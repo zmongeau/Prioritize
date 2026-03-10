@@ -12,4 +12,4 @@ Happiness can be collected through user survey data, such as asking for a star r
 
 ## Metric 3: ___
 
-How to collect
+Engagement can be collected by monitoring the frequency of the app's usage by its users. Because this app is meant to be used a task tracker app that shows the user what they need to complete either today or during the week, this requires the user to open the app on a semi-frequent basis. Engagement can be monitored based on the frequency of how often the app is opened, while also looking for any increase in usage frequency. We can also monitor engagement while seeing how frequently new tasks are being added to the user's task list. We can also utilize other metrics such as the average time spent on the app and average number of times the app is opened to monitor the active engagement of the app. 
