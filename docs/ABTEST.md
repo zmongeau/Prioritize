@@ -24,14 +24,14 @@ Experiment:
 
 Variations:
 
-## Test 3: Name
+## Test 3: Profile Customization Options 
 
-User Story Number:
+User Story Number: US3
 
-Metrics:
+Metrics: Happiness, Engagement
 
-Hypothesis:
+Hypothesis: Many users like having the ability to create custom profiles in apps to try and distinguish themselves from other users, but sometimes too much personalization can feel overwhelming, or even unnecessary based on the type of app. If there are too many options in setting up a profile, this can lead to a lower number of users actively using the app due to the profile being too complicated to set up. Conversely, if there are too litte or not enough options for personalization, this can lead to user's not being as happy with utilizing the app, and can result in negative reviews. We can hypothesize that buy limiting the number of personalization options, some users will experience a decrease in happiness when using the app due to the lack of personalization that comes with creating their profile in our app. 
 
-Experiment:
+Experiment: Using Firebase Analytics, we can test this hypothesis based on user reviews of the app, as well as the active engagement time and user retention metrics to view how often the users would return based on the different variations between the A test and the B test. Because our auidence is primarily college aged students, the userbase is fairly massive, which can result in more accurate results. Because of this, we want to be able to make this experiment available to as many users as possible to get the best possible feedback on the app. 
 
-Variations:
+Variations: In our current version of our app, our profile creation include a profile picture, the user's name, the user's username for the app, and the user's birthday. These are the basic profile fields that many apps utilize to create an individual's profile. However, if a user feels that these are too many profile fields for our type of app. So 
