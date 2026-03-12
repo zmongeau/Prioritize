@@ -12,17 +12,17 @@ Experiment: We will create two variations of the task card layout so that we hav
 
 Variations: More than one new layout could be created for the task cards. For example, one variation could focus on a more minimalist design with less information displayed, while another variation could include additional features such as color-coding for task priority or due dates. This would allow us to compare multiple design changes and determine which elements have the most significant impact on user engagement and task completion rates. This could be tested alongside the original layout such that there are three or even four groups of users to compare against each other.
 
-## Test 2: Name
+## Test 2: Password reset on same screen as log-in vs. on separate screen.
 
-User Story Number:
+User Story Number: US1
 
-Metrics:
+Metrics: Happiness, Task Success
 
-Hypothesis:
+Hypothesis: Users may become confused or frustrated when the password reset process happens on the same screen as the login form. If the password reset process is moved to a separate screen after clicking the "Forgot Password" button, users will have a clearer and more focused process for resetting their password. This should improve user happiness and increase the task success rate of password reset attempts.
 
-Experiment:
+Experiment: 50% of users will experience the current design where the password reset process occurs on the same screen as the log-in process. The other 50% will see the new design where clicking "Forgot Password" takes them to a separate screen where they enter their email before being redirected back to the login screen. Firebase Analytics will track successful password reset completions, login success after reset, and user interactions with the password reset flow. These metrics will help determine whether the new design improves user happiness and task success.
 
-Variations:
+Variations: Original variation has it so the password reset process is on the same screen as the log in process. The new variation will take the user to a new screen when the "Forgot password" button is clicked, prompting the user to enter their email where they will then be taken back to the log in screen.
 
 ## Test 3: Profile Customization Options 
 
