@@ -20,4 +20,4 @@ Retention can be collected through user sign in data, the number of tasks create
 
 ## Metric 5: Task Success
 
-Explanation
+Task success can be collected through user interaction data within the app, such as click-through rates and successful logins. These metrics can be tracked through the backend to measure how easily users are able to navigate the app and complete their intended actions. For example, the click-through rate of main buttons in the app can show whether users are able to find important functions like creating or completing tasks. Tracking the number of users that successfully log in helps determine if users are able to access the app without issues. These metrics help measure whether users can easily find their tasks and complete them with minimal difficulty, giving insight into how effectively the app supports task completion.
