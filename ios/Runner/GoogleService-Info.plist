@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>637646518118-h5pa4rv9o6mhsd22q4gvv067vdimgdqp.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.637646518118-h5pa4rv9o6mhsd22q4gvv067vdimgdqp</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>637646518118-fek0p0sbioaievlud600ubmhlb9bblav.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBXb7nWuZDWyOySrAevJusaNYx6UQJzxQc</string>
+	<key>GCM_SENDER_ID</key>
+	<string>637646518118</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.mycompany.prioritize</string>
+	<key>PROJECT_ID</key>
+	<string>prioritize-v5lehr</string>
+	<key>STORAGE_BUCKET</key>
+	<string>prioritize-v5lehr.firebasestorage.app</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:637646518118:ios:57c452decd32ff0d2d3aa7</string>
+</dict>
+</plist>
