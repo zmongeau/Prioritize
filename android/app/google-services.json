@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "637646518118",
+    "project_id": "prioritize-v5lehr",
+    "storage_bucket": "prioritize-v5lehr.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:637646518118:android:8261f46d74f21bde2d3aa7",
+        "android_client_info": {
+          "package_name": "com.mycompany.prioritize"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "637646518118-fek0p0sbioaievlud600ubmhlb9bblav.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mycompany.prioritize",
+            "certificate_hash": "9bbb3186b2189ef16d8f272bdab59362c395cbb4"
+          }
+        },
+        {
+          "client_id": "637646518118-sf3nu98q2drtm40gp23rahbbemfni7rn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAR0ggzKaXIefYvKu3p-h1Ow17MF40HT-k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "637646518118-sf3nu98q2drtm40gp23rahbbemfni7rn.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "637646518118-h5pa4rv9o6mhsd22q4gvv067vdimgdqp.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.mycompany.prioritize"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
