@@ -1,9 +1,8 @@
 import '/flutter_flow/flutter_flow_util.dart';
-import '/index.dart';
-import 'task_list_widget.dart' show TaskListWidget;
+import 'task_list_copy_widget.dart' show TaskListCopyWidget;
 import 'package:flutter/material.dart';
 
-class TaskListModel extends FlutterFlowModel<TaskListWidget> {
+class TaskListCopyModel extends FlutterFlowModel<TaskListCopyWidget> {
   @override
   void initState(BuildContext context) {}
 

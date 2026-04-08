@@ -10,7 +10,8 @@ Future initFirebase() async {
             projectId: "prioritize-v5lehr",
             storageBucket: "prioritize-v5lehr.firebasestorage.app",
             messagingSenderId: "637646518118",
-            appId: "1:637646518118:web:2cd4133f13e976d72d3aa7"));
+            appId: "1:637646518118:web:2cd4133f13e976d72d3aa7",
+            measurementId: "G-N7YTHBVEB7"));
   } else {
     await Firebase.initializeApp();
   }

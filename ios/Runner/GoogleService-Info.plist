@@ -32,5 +32,7 @@
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
 	<string>1:637646518118:ios:57c452decd32ff0d2d3aa7</string>
+	<key>DATABASE_URL</key>
+	<string>https://prioritize-v5lehr-default-rtdb.firebaseio.com</string>
 </dict>
 </plist>
