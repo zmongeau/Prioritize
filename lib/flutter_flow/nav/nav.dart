@@ -71,26 +71,22 @@ class AppStateNotifier extends ChangeNotifier {
   }
 }
 
-GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
+GoRouter createRouter(AppStateNotifier appStateNotifier, [Widget? entryPage]) =>
+    GoRouter(
       initialLocation: '/',
       debugLogDiagnostics: true,
       refreshListenable: appStateNotifier,
       navigatorKey: appNavigatorKey,
-      errorBuilder: (context, state) =>
-          appStateNotifier.loggedIn ? NavBarPage() : SignUpPageWidget(),
+      errorBuilder: (context, state) => appStateNotifier.loggedIn
+          ? entryPage ?? NavBarPage()
+          : SignUpPageWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
-          builder: (context, _) =>
-              appStateNotifier.loggedIn ? NavBarPage() : SignUpPageWidget(),
-        ),
-        FFRoute(
-          name: TaskListWidget.routeName,
-          path: TaskListWidget.routePath,
-          builder: (context, params) => params.isEmpty
-              ? NavBarPage(initialPage: 'TaskList')
-              : TaskListWidget(),
+          builder: (context, _) => appStateNotifier.loggedIn
+              ? entryPage ?? NavBarPage()
+              : SignUpPageWidget(),
         ),
         FFRoute(
           name: ProfilePageWidget.routeName,
@@ -138,6 +134,13 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: RatingScreenWidget.routeName,
           path: RatingScreenWidget.routePath,
           builder: (context, params) => RatingScreenWidget(),
+        ),
+        FFRoute(
+          name: TaskListWidget.routeName,
+          path: TaskListWidget.routePath,
+          builder: (context, params) => params.isEmpty
+              ? NavBarPage(initialPage: 'TaskList')
+              : TaskListWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

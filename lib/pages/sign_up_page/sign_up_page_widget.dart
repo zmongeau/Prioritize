@@ -304,6 +304,7 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget>
                                         text: 'Log In',
                                       ),
                                       Tab(
+                                        key: ValueKey('SignUpTab_0glq'),
                                         text: 'Sign Up',
                                       ),
                                     ],
@@ -1420,6 +1421,8 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget>
                                                 child: Container(
                                                   width: double.infinity,
                                                   child: TextFormField(
+                                                    key: ValueKey(
+                                                        'emailAddress_Create_c91l'),
                                                     controller: _model
                                                         .emailAddressCreateTextController,
                                                     focusNode: _model
@@ -1590,6 +1593,8 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget>
                                                 child: Container(
                                                   width: double.infinity,
                                                   child: TextFormField(
+                                                    key: ValueKey(
+                                                        'password_Create_6l5m'),
                                                     controller: _model
                                                         .passwordCreateTextController,
                                                     focusNode: _model
@@ -1753,6 +1758,8 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget>
                                                 child: Container(
                                                   width: double.infinity,
                                                   child: TextFormField(
+                                                    key: ValueKey(
+                                                        'passwordConfirm_fdsk'),
                                                     controller: _model
                                                         .passwordConfirmTextController,
                                                     focusNode: _model
@@ -1919,6 +1926,8 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget>
                                                       .fromSTEB(
                                                           0.0, 0.0, 0.0, 16.0),
                                                   child: FFButtonWidget(
+                                                    key: ValueKey(
+                                                        'SignUpButton_rorj'),
                                                     onPressed: () async {
                                                       logFirebaseEvent(
                                                           'SIGN_UP_PAGE_PAGE_SignUpButton_ON_TAP');

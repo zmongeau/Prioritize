@@ -28,11 +28,11 @@ String? priorityLabel(int? value) {
 Color? priorityColorDark(int? value) {
   switch (value) {
     case 0:
-      return Color(0xFF4CAF50); // your Low color
+      return Color(0xFF4CAF50);
     case 1:
-      return Color(0xFFFF9800); // your Medium color
+      return Color(0xFFFF9800);
     case 2:
-      return Color(0xFFF44336); // your High color
+      return Color(0xFFF44336);
     default:
       return Color(0xFF9E9E9E);
   }

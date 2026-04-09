@@ -219,6 +219,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                         Container(
                           width: double.infinity,
                           child: TextFormField(
+                            key: ValueKey('Name_0n7z'),
                             controller: _model.nameTextController,
                             focusNode: _model.nameFocusNode,
                             onChanged: (_) => EasyDebounce.debounce(
@@ -349,6 +350,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                         Container(
                           width: double.infinity,
                           child: TextFormField(
+                            key: ValueKey('Username_l7pi'),
                             controller: _model.usernameTextController,
                             focusNode: _model.usernameFocusNode,
                             onChanged: (_) => EasyDebounce.debounce(
@@ -479,6 +481,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                         Align(
                           alignment: AlignmentDirectional(0.0, 1.0),
                           child: FFButtonWidget(
+                            key: ValueKey('Birthday_ca9d'),
                             onPressed: () async {
                               logFirebaseEvent(
                                   'PROFILE_PAGE_PAGE_Birthday_ON_TAP');
@@ -598,6 +601,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                     Align(
                       alignment: AlignmentDirectional(0.0, 1.0),
                       child: FFButtonWidget(
+                        key: ValueKey('Submit_5rmq'),
                         onPressed: () async {
                           logFirebaseEvent('PROFILE_PAGE_PAGE_Submit_ON_TAP');
                           logFirebaseEvent('Submit_backend_call');

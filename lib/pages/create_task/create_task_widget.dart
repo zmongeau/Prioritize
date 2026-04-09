@@ -168,6 +168,7 @@ class _CreateTaskWidgetState extends State<CreateTaskWidget> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   TextFormField(
+                                    key: ValueKey('task_40mr'),
                                     controller: _model.taskTextController,
                                     focusNode: _model.taskFocusNode,
                                     autofocus: true,
@@ -335,6 +336,7 @@ class _CreateTaskWidgetState extends State<CreateTaskWidget> {
                                     ],
                                   ),
                                   TextFormField(
+                                    key: ValueKey('description_hugd'),
                                     controller:
                                         _model.descriptionTextController,
                                     focusNode: _model.descriptionFocusNode,
@@ -545,6 +547,7 @@ class _CreateTaskWidgetState extends State<CreateTaskWidget> {
                                     child: Container(
                                       width: 200.0,
                                       child: TextFormField(
+                                        key: ValueKey('TextField_vp6n'),
                                         controller: _model.textController3,
                                         focusNode: _model.textFieldFocusNode,
                                         autofocus: false,
@@ -707,6 +710,7 @@ class _CreateTaskWidgetState extends State<CreateTaskWidget> {
                                         ),
                                   ),
                                   FlutterFlowDropDown<int>(
+                                    key: ValueKey('DropDown_6xvu'),
                                     controller:
                                         _model.dropDownValueController ??=
                                             FormFieldController<int>(
@@ -870,6 +874,7 @@ class _CreateTaskWidgetState extends State<CreateTaskWidget> {
                                       }
                                     },
                                     child: Container(
+                                      key: ValueKey('Container_xa4s'),
                                       width: double.infinity,
                                       height: 48.0,
                                       decoration: BoxDecoration(
@@ -948,6 +953,7 @@ class _CreateTaskWidgetState extends State<CreateTaskWidget> {
                     padding:
                         EdgeInsetsDirectional.fromSTEB(16.0, 12.0, 16.0, 12.0),
                     child: FFButtonWidget(
+                      key: ValueKey('Button_j0ds'),
                       onPressed: () async {
                         logFirebaseEvent('CREATE_TASK_PAGE_CREATE_BTN_ON_TAP');
                         logFirebaseEvent('Button_backend_call');
