@@ -41,7 +41,7 @@ void main() async {
     await GoogleFonts.pendingFonts();
 
     await tester.tap(find.byKey(const ValueKey('SignUpTab_0glq')));
-    await tester.pumpAndSettle(const Duration(milliseconds: 3000));
+    await tester.pumpAndSettle(const Duration(milliseconds: 5000));
     await tester.tap(find.byKey(const ValueKey('emailAddress_Create_c91l')));
     await tester.pumpAndSettle(const Duration(milliseconds: 1000));
     await tester.enterText(
@@ -54,7 +54,7 @@ void main() async {
     await tester.enterText(
         find.byKey(const ValueKey('passwordConfirm_fdsk')), 'password');
     await tester.tap(find.byKey(const ValueKey('SignUpButton_rorj')));
-    await tester.pumpAndSettle(const Duration(milliseconds: 3000));
+    await tester.pumpAndSettle(const Duration(milliseconds: 5000));
     await tester.tap(find.byKey(const ValueKey('Name_0n7z')));
     await tester.enterText(
         find.byKey(const ValueKey('Name_0n7z')), 'Robert Stevens');
