@@ -41,7 +41,9 @@ void main() async {
     await GoogleFonts.pendingFonts();
 
     await tester.tap(find.byKey(const ValueKey('SignUpTab_0glq')));
+    await tester.pumpAndSettle(const Duration(milliseconds: 3000));
     await tester.tap(find.byKey(const ValueKey('emailAddress_Create_c91l')));
+    await tester.pumpAndSettle(const Duration(milliseconds: 1000));
     await tester.enterText(
         find.byKey(const ValueKey('emailAddress_Create_c91l')),
         'robert.stevens@uri.edu');
