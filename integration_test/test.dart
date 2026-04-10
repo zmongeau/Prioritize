@@ -61,9 +61,10 @@ void main() async {
         find.byKey(const ValueKey('Name_0n7z')), 'Robert Stevens');
     await tester.enterText(
         find.byKey(const ValueKey('Username_l7pi')), 'rstevens19');
+    await tester.tap(find.byKey(const ValueKey('Birthday_ca9d')));
+    await tester.pumpAndSettle(const Duration(milliseconds: 5000));
     await tester.enterText(
         find.byKey(const ValueKey('Birthday_ca9d')), '11/26/2000');
-    await tester.pumpAndSettle(const Duration(milliseconds: 5000));
     await tester.tap(find.byKey(const ValueKey('Submit_5rmq')));
     await tester.pumpAndSettle(const Duration(milliseconds: 3000));
     await tester.tap(find.byKey(const ValueKey('Container_fma9')));
