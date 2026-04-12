@@ -373,6 +373,8 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget>
                                                 child: Container(
                                                   width: double.infinity,
                                                   child: TextFormField(
+                                                    key: ValueKey(
+                                                        'emailAddress_dacs'),
                                                     controller: _model
                                                         .emailAddressTextController,
                                                     focusNode: _model
@@ -542,6 +544,8 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget>
                                                 child: Container(
                                                   width: double.infinity,
                                                   child: TextFormField(
+                                                    key: ValueKey(
+                                                        'password_g4ok'),
                                                     controller: _model
                                                         .passwordTextController,
                                                     focusNode: _model
@@ -706,6 +710,8 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget>
                                                       .fromSTEB(
                                                           0.0, 0.0, 0.0, 16.0),
                                                   child: FFButtonWidget(
+                                                    key: ValueKey(
+                                                        'LoginButton_hzgs'),
                                                     onPressed: () async {
                                                       logFirebaseEvent(
                                                           'SIGN_UP_PAGE_PAGE_LoginButton_ON_TAP');
