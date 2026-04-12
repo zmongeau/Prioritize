@@ -63,7 +63,7 @@ void main() async {
         find.byKey(const ValueKey('Username_l7pi')), 'rstevens19');
     await tester.tap(find.byKey(const ValueKey('Birthday_ca9d')));
     await tester.pumpAndSettle(const Duration(milliseconds: 5000));
-    await tester.tap(find.byIcon(Icons.create_rounded));
+    await tester.tap(find.byIcon(Icons.create_sharp));
     await tester.pumpAndSettle(const Duration(milliseconds: 5000));
     await tester.enterText(
         find.byKey(const ValueKey('Birthday_ca9d')), '11/26/2000');
@@ -84,6 +84,36 @@ void main() async {
         find.byKey(const ValueKey('Container_xa4s')), '4/13/2026');
     await tester.tap(find.byKey(const ValueKey('Button_j0ds')));
     await tester.pumpAndSettle(const Duration(milliseconds: 3000));
+  });
+
+  testWidgets('MakeTest', (WidgetTester tester) async {
+    _overrideOnError();
+
+    await tester.pumpWidget(ChangeNotifierProvider(
+      create: (context) => FFAppState(),
+      child: MyApp(
+        entryPage: TaskListWidget(),
+      ),
+    ));
+    await GoogleFonts.pendingFonts();
+
+    await tester.pumpAndSettle(const Duration(milliseconds: 5000));
+    await tester.tap(find.byKey(const ValueKey('Container_fma9')));
+    await tester.pumpAndSettle(const Duration(milliseconds: 5000));
+    await tester.enterText(
+        find.byKey(const ValueKey('task_40mr')), 'Submit 11.2');
+    await tester.pumpAndSettle(const Duration(milliseconds: 3000));
+    await tester.enterText(find.byKey(const ValueKey('description_hugd')),
+        'Complete 11.2 On Time');
+    await tester.pumpAndSettle(const Duration(milliseconds: 3000));
+    await tester.enterText(
+        find.byKey(const ValueKey('TextField_vp6n')), 'CSC305');
+    await tester.pumpAndSettle(const Duration(milliseconds: 3000));
+    await tester.tap(find.byKey(const ValueKey('DropDown_6xvu')));
+    await tester.tap(find.text('High'));
+    await tester.enterText(
+        find.byKey(const ValueKey('Container_xa4s')), '4/13/2026');
+    await tester.tap(find.byKey(const ValueKey('Button_j0ds')));
   });
 }
 
