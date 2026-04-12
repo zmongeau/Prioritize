@@ -122,6 +122,29 @@ void main() async {
     await tester.pumpAndSettle(const Duration(milliseconds: 3000));
     await tester.tap(find.byKey(const ValueKey('Button_j0ds')));
   });
+
+  testWidgets('SignUp', (WidgetTester tester) async {
+    _overrideOnError();
+
+    await tester.pumpWidget(ChangeNotifierProvider(
+      create: (context) => FFAppState(),
+      child: const MyApp(),
+    ));
+    await GoogleFonts.pendingFonts();
+
+    await tester.pumpAndSettle(const Duration(milliseconds: 5000));
+    await tester.tap(find.byKey(const ValueKey('SignUpTab_0glq')));
+    await tester.enterText(
+        find.byKey(const ValueKey('emailAddress_Create_c91l')),
+        'robert.stevens@uri.edu');
+    await tester.enterText(
+        find.byKey(const ValueKey('password_Create_6l5m')), 'password');
+    await tester.enterText(
+        find.byKey(const ValueKey('passwordConfirm_fdsk')), 'password');
+    await tester.tap(find.byKey(const ValueKey('SignUpButton_rorj')));
+    await tester.pumpAndSettle(const Duration(milliseconds: 5000));
+    expect(find.text('Profile'), findsWidgets);
+  });
 }
 
 // There are certain types of errors that can happen during tests but
