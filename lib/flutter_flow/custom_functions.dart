@@ -50,3 +50,14 @@ Color? priorityColorLight(int? value) {
       return Color(0xFFF5F5F5);
   }
 }
+
+List<DateTime> getUniqueDueDates(List<TaskDataRecord> tasks) {
+  final dates = tasks
+      .where((t) => t.dueDate != null)
+      .map((t) => DateTime(t.dueDate!.year, t.dueDate!.month, t.dueDate!.day))
+      .toSet()
+      .toList();
+
+  dates.sort((a, b) => a.compareTo(b));
+  return dates;
+}

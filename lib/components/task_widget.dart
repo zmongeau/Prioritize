@@ -5,7 +5,9 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import '/index.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'task_model.dart';
 export 'task_model.dart';
 
@@ -37,6 +39,14 @@ class _TaskWidgetState extends State<TaskWidget> {
     super.initState();
     _model = createModel(context, () => TaskModel());
 
+    // On component load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      logFirebaseEvent('TASK_COMP_Task_ON_INIT_STATE');
+      logFirebaseEvent('Task_update_app_state');
+      FFAppState().numberCompleted = FFAppState().numberCompleted + 1;
+      safeSetState(() {});
+    });
+
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
@@ -49,6 +59,8 @@ class _TaskWidgetState extends State<TaskWidget> {
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return Padding(
       padding: EdgeInsetsDirectional.fromSTEB(16.0, 12.0, 16.0, 12.0),
       child: Container(
@@ -298,24 +310,27 @@ class _TaskWidgetState extends State<TaskWidget> {
                         ),
                       ].divide(SizedBox(width: 12.0)),
                     ),
-                    Align(
-                      alignment: AlignmentDirectional(1.0, 1.0),
-                      child: FlutterFlowIconButton(
-                        borderRadius: 8.0,
-                        buttonSize: 40.0,
-                        icon: Icon(
-                          Icons.edit,
-                          color: Color(0xFF57636C),
-                          size: 24.0,
-                        ),
-                        onPressed: () async {
-                          logFirebaseEvent('TASK_COMP_edit_ICN_ON_TAP');
-                          logFirebaseEvent('IconButton_navigate_to');
+                    if (!widget.tasksDoc!.completed)
+                      Align(
+                        alignment: AlignmentDirectional(1.0, 1.0),
+                        child: FlutterFlowIconButton(
+                          borderRadius: 8.0,
+                          buttonSize: 40.0,
+                          hoverIconColor: FlutterFlowTheme.of(context).primary,
+                          hoverBorderColor: Color(0x00FFFFFF),
+                          icon: Icon(
+                            Icons.edit,
+                            color: Color(0xFF57636C),
+                            size: 24.0,
+                          ),
+                          onPressed: () async {
+                            logFirebaseEvent('TASK_COMP_edit_ICN_ON_TAP');
+                            logFirebaseEvent('IconButton_navigate_to');
 
-                          context.pushNamed(EditTaskWidget.routeName);
-                        },
+                            context.pushNamed(EditTaskWidget.routeName);
+                          },
+                        ),
                       ),
-                    ),
                   ].divide(SizedBox(height: 4.0)),
                 ),
               ),

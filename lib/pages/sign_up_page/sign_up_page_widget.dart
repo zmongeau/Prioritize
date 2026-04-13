@@ -301,6 +301,7 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget>
                                         0.0, 12.0, 16.0, 12.0),
                                     tabs: [
                                       Tab(
+                                        key: ValueKey('LogInTab_2m5e'),
                                         text: 'Log In',
                                       ),
                                       Tab(

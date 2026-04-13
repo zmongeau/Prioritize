@@ -141,6 +141,16 @@ GoRouter createRouter(AppStateNotifier appStateNotifier, [Widget? entryPage]) =>
           builder: (context, params) => params.isEmpty
               ? NavBarPage(initialPage: 'TaskList')
               : TaskListWidget(),
+        ),
+        FFRoute(
+          name: CalendarPageWidget.routeName,
+          path: CalendarPageWidget.routePath,
+          builder: (context, params) => CalendarPageWidget(),
+        ),
+        FFRoute(
+          name: UserProfilePageWidget.routeName,
+          path: UserProfilePageWidget.routePath,
+          builder: (context, params) => UserProfilePageWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

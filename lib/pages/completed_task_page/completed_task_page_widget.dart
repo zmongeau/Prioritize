@@ -5,7 +5,6 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'completed_task_page_model.dart';
 export 'completed_task_page_model.dart';
 
@@ -44,8 +43,6 @@ class _CompletedTaskPageWidgetState extends State<CompletedTaskPageWidget> {
 
   @override
   Widget build(BuildContext context) {
-    context.watch<FFAppState>();
-
     return GestureDetector(
       onTap: () {
         FocusScope.of(context).unfocus();
@@ -82,27 +79,6 @@ class _CompletedTaskPageWidgetState extends State<CompletedTaskPageWidget> {
                   ),
                 ),
               ),
-              Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
-                child: Text(
-                  '${FFAppState().numberCompleted.toString()} Tasks Completed',
-                  style: FlutterFlowTheme.of(context).labelMedium.override(
-                        font: GoogleFonts.inter(
-                          fontWeight: FlutterFlowTheme.of(context)
-                              .labelMedium
-                              .fontWeight,
-                          fontStyle: FlutterFlowTheme.of(context)
-                              .labelMedium
-                              .fontStyle,
-                        ),
-                        letterSpacing: 0.0,
-                        fontWeight:
-                            FlutterFlowTheme.of(context).labelMedium.fontWeight,
-                        fontStyle:
-                            FlutterFlowTheme.of(context).labelMedium.fontStyle,
-                      ),
-                ),
-              ),
               StreamBuilder<List<TaskDataRecord>>(
                 stream: queryTaskDataRecord(
                   queryBuilder: (taskDataRecord) => taskDataRecord
@@ -113,7 +89,8 @@ class _CompletedTaskPageWidgetState extends State<CompletedTaskPageWidget> {
                       .where(
                         'completed',
                         isEqualTo: true,
-                      ),
+                      )
+                      .orderBy('due_date', descending: true),
                 ),
                 builder: (context, snapshot) {
                   // Customize what your widget looks like when it's loading.
@@ -141,14 +118,13 @@ class _CompletedTaskPageWidgetState extends State<CompletedTaskPageWidget> {
                     itemBuilder: (context, listViewIndex) {
                       final listViewTaskDataRecord =
                           listViewTaskDataRecordList[listViewIndex];
-                      return InkWell(
-                        splashColor: Colors.transparent,
-                        focusColor: Colors.transparent,
-                        hoverColor: Colors.transparent,
-                        highlightColor: Colors.transparent,
-                        onTap: () async {
+                      return TaskWidget(
+                        key: Key(
+                            'Key07p_${listViewIndex}_of_${listViewTaskDataRecordList.length}'),
+                        tasksDoc: listViewTaskDataRecord,
+                        completion: () async {
                           logFirebaseEvent(
-                              'COMPLETED_TASK_Container_07pr1t9e_ON_TAP');
+                              'COMPLETED_TASK_Container_07pr1t9e_CALLBA');
                           logFirebaseEvent('Task_backend_call');
 
                           await listViewTaskDataRecord.reference
@@ -156,12 +132,6 @@ class _CompletedTaskPageWidgetState extends State<CompletedTaskPageWidget> {
                             completed: false,
                           ));
                         },
-                        child: TaskWidget(
-                          key: Key(
-                              'Key07p_${listViewIndex}_of_${listViewTaskDataRecordList.length}'),
-                          tasksDoc: listViewTaskDataRecord,
-                          completion: () async {},
-                        ),
                       );
                     },
                   );

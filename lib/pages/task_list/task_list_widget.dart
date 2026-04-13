@@ -4,10 +4,10 @@ import '/components/task_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import '/index.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'task_list_model.dart';
 export 'task_list_model.dart';
 
@@ -47,8 +47,6 @@ class _TaskListWidgetState extends State<TaskListWidget> {
 
   @override
   Widget build(BuildContext context) {
-    context.watch<FFAppState>();
-
     return GestureDetector(
       onTap: () {
         FocusScope.of(context).unfocus();
@@ -66,80 +64,106 @@ class _TaskListWidgetState extends State<TaskListWidget> {
               mainAxisSize: MainAxisSize.max,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Row(
-                  mainAxisSize: MainAxisSize.min,
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Align(
-                      alignment: AlignmentDirectional(1.0, 0.0),
-                      child: FlutterFlowIconButton(
-                        borderRadius: 8.0,
-                        buttonSize: 40.0,
-                        icon: Icon(
-                          Icons.logout,
-                          color: FlutterFlowTheme.of(context).secondaryText,
-                          size: 24.0,
-                        ),
-                        onPressed: () async {
-                          logFirebaseEvent(
-                              'TASK_LIST_PAGE_SignOutButton_ON_TAP');
-                          logFirebaseEvent('SignOutButton_auth');
-                          GoRouter.of(context).prepareAuthEvent();
-                          await authManager.signOut();
-                          GoRouter.of(context).clearRedirectLocation();
+                Align(
+                  alignment: AlignmentDirectional(-1.0, 0.0),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Align(
+                        alignment: AlignmentDirectional(1.0, 0.0),
+                        child: FlutterFlowIconButton(
+                          key: ValueKey('SignOutButton_koqx'),
+                          borderRadius: 8.0,
+                          buttonSize: 40.0,
+                          hoverIconColor: FlutterFlowTheme.of(context).error,
+                          icon: Icon(
+                            Icons.logout,
+                            color: FlutterFlowTheme.of(context).secondaryText,
+                            size: 24.0,
+                          ),
+                          onPressed: () async {
+                            logFirebaseEvent(
+                                'TASK_LIST_PAGE_SignOutButton_ON_TAP');
+                            logFirebaseEvent('SignOutButton_auth');
+                            GoRouter.of(context).prepareAuthEvent();
+                            await authManager.signOut();
+                            GoRouter.of(context).clearRedirectLocation();
 
-                          context.goNamedAuth(
-                              SignUpPageWidget.routeName, context.mounted);
-                        },
+                            context.goNamedAuth(
+                                SignUpPageWidget.routeName, context.mounted);
+                          },
+                        ),
                       ),
-                    ),
-                    Text(
-                      'My Tasks',
-                      style:
-                          FlutterFlowTheme.of(context).headlineMedium.override(
-                                font: GoogleFonts.interTight(
-                                  fontWeight: FontWeight.bold,
-                                  fontStyle: FlutterFlowTheme.of(context)
-                                      .headlineMedium
-                                      .fontStyle,
-                                ),
-                                letterSpacing: 0.0,
+                      Text(
+                        'My Tasks',
+                        style: FlutterFlowTheme.of(context)
+                            .headlineMedium
+                            .override(
+                              font: GoogleFonts.interTight(
                                 fontWeight: FontWeight.bold,
                                 fontStyle: FlutterFlowTheme.of(context)
                                     .headlineMedium
                                     .fontStyle,
                               ),
-                    ),
-                  ],
-                ),
-                Align(
-                  alignment: AlignmentDirectional(-1.0, 0.0),
-                  child: Padding(
-                    padding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 2.0, 0.0, 10.0),
-                    child: Text(
-                      '${valueOrDefault<String>(
-                        FFAppState().numberCompleted.toString(),
-                        '0',
-                      )} Tasks Remaining',
-                      style: FlutterFlowTheme.of(context).labelMedium.override(
-                            font: GoogleFonts.inter(
-                              fontWeight: FlutterFlowTheme.of(context)
-                                  .labelMedium
-                                  .fontWeight,
+                              letterSpacing: 0.0,
+                              fontWeight: FontWeight.bold,
                               fontStyle: FlutterFlowTheme.of(context)
-                                  .labelMedium
+                                  .headlineMedium
                                   .fontStyle,
                             ),
-                            letterSpacing: 0.0,
-                            fontWeight: FlutterFlowTheme.of(context)
-                                .labelMedium
-                                .fontWeight,
-                            fontStyle: FlutterFlowTheme.of(context)
-                                .labelMedium
-                                .fontStyle,
+                      ),
+                      Align(
+                        alignment: AlignmentDirectional(0.0, 0.0),
+                        child: FFButtonWidget(
+                          onPressed: () async {
+                            logFirebaseEvent('TASK_LIST_PAGE__BTN_ON_TAP');
+                            logFirebaseEvent('Button_navigate_to');
+
+                            context.goNamed(UserProfilePageWidget.routeName);
+                          },
+                          text: '',
+                          icon: Icon(
+                            Icons.manage_accounts,
+                            size: 24.0,
                           ),
-                    ),
+                          options: FFButtonOptions(
+                            height: 40.0,
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                12.0, 0.0, 1.0, 0.0),
+                            iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                0.0, 0.0, 0.0, 0.0),
+                            iconColor:
+                                FlutterFlowTheme.of(context).secondaryText,
+                            color: Color(0x004B39EF),
+                            textStyle: FlutterFlowTheme.of(context)
+                                .titleSmall
+                                .override(
+                                  font: GoogleFonts.interTight(
+                                    fontWeight: FlutterFlowTheme.of(context)
+                                        .titleSmall
+                                        .fontWeight,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .titleSmall
+                                        .fontStyle,
+                                  ),
+                                  color: Colors.white,
+                                  letterSpacing: 0.0,
+                                  fontWeight: FlutterFlowTheme.of(context)
+                                      .titleSmall
+                                      .fontWeight,
+                                  fontStyle: FlutterFlowTheme.of(context)
+                                      .titleSmall
+                                      .fontStyle,
+                                ),
+                            elevation: 0.0,
+                            borderRadius: BorderRadius.circular(6.0),
+                            hoverTextColor:
+                                FlutterFlowTheme.of(context).primary,
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
                 Row(
@@ -173,6 +197,10 @@ class _TaskListWidgetState extends State<TaskListWidget> {
                           decoration: BoxDecoration(
                             color: Color(0xFF89DC8C),
                             borderRadius: BorderRadius.circular(20.0),
+                            border: Border.all(
+                              color: FlutterFlowTheme.of(context).primaryText,
+                              width: 1.0,
+                            ),
                           ),
                           child: Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(
@@ -220,6 +248,10 @@ class _TaskListWidgetState extends State<TaskListWidget> {
                           color:
                               FlutterFlowTheme.of(context).secondaryBackground,
                           borderRadius: BorderRadius.circular(20.0),
+                          border: Border.all(
+                            color: FlutterFlowTheme.of(context).primaryText,
+                            width: 1.0,
+                          ),
                         ),
                         child: Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(
@@ -261,46 +293,64 @@ class _TaskListWidgetState extends State<TaskListWidget> {
                     Padding(
                       padding:
                           EdgeInsetsDirectional.fromSTEB(6.0, 0.0, 6.0, 0.0),
-                      child: Container(
-                        height: 36.0,
-                        decoration: BoxDecoration(
-                          color:
-                              FlutterFlowTheme.of(context).secondaryBackground,
-                          borderRadius: BorderRadius.circular(20.0),
-                        ),
-                        child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              6.0, 8.0, 6.0, 8.0),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              Icon(
-                                Icons.calendar_today_rounded,
-                                color:
-                                    FlutterFlowTheme.of(context).secondaryText,
-                                size: 14.0,
-                              ),
-                              Text(
-                                'Due Date',
-                                style: FlutterFlowTheme.of(context)
-                                    .labelMedium
-                                    .override(
-                                      font: GoogleFonts.inter(
+                      child: InkWell(
+                        splashColor: Colors.transparent,
+                        focusColor: Colors.transparent,
+                        hoverColor: Colors.transparent,
+                        highlightColor: Colors.transparent,
+                        onTap: () async {
+                          logFirebaseEvent(
+                              'TASK_LIST_PAGE_Container_dm8gvehe_ON_TAP');
+                          logFirebaseEvent('Container_navigate_to');
+
+                          context.goNamed(CalendarPageWidget.routeName);
+                        },
+                        child: Container(
+                          height: 36.0,
+                          decoration: BoxDecoration(
+                            color: FlutterFlowTheme.of(context)
+                                .secondaryBackground,
+                            borderRadius: BorderRadius.circular(20.0),
+                            border: Border.all(
+                              color: FlutterFlowTheme.of(context).primaryText,
+                              width: 1.0,
+                            ),
+                          ),
+                          child: Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                6.0, 8.0, 6.0, 8.0),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                Icon(
+                                  Icons.calendar_today_rounded,
+                                  color: FlutterFlowTheme.of(context)
+                                      .secondaryText,
+                                  size: 14.0,
+                                ),
+                                Text(
+                                  'Due Date',
+                                  style: FlutterFlowTheme.of(context)
+                                      .labelMedium
+                                      .override(
+                                        font: GoogleFonts.inter(
+                                          fontWeight: FontWeight.w600,
+                                          fontStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .labelMedium
+                                                  .fontStyle,
+                                        ),
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondaryText,
+                                        letterSpacing: 0.0,
                                         fontWeight: FontWeight.w600,
                                         fontStyle: FlutterFlowTheme.of(context)
                                             .labelMedium
                                             .fontStyle,
                                       ),
-                                      color: FlutterFlowTheme.of(context)
-                                          .secondaryText,
-                                      letterSpacing: 0.0,
-                                      fontWeight: FontWeight.w600,
-                                      fontStyle: FlutterFlowTheme.of(context)
-                                          .labelMedium
-                                          .fontStyle,
-                                    ),
-                              ),
-                            ].divide(SizedBox(width: 6.0)),
+                                ),
+                              ].divide(SizedBox(width: 6.0)),
+                            ),
                           ),
                         ),
                       ),
@@ -333,8 +383,11 @@ class _TaskListWidgetState extends State<TaskListWidget> {
                           'user',
                           isEqualTo: currentUserReference,
                         )
-                        .orderBy('due_date')
-                        .orderBy('priority', descending: true),
+                        .where(
+                          'completed',
+                          isEqualTo: false,
+                        )
+                        .orderBy('due_date'),
                   ),
                   builder: (context, snapshot) {
                     // Customize what your widget looks like when it's loading.
@@ -420,7 +473,9 @@ class _TaskListWidgetState extends State<TaskListWidget> {
                                             'due_date',
                                             isEqualTo:
                                                 listViewTaskDataRecord.dueDate,
-                                          ),
+                                          )
+                                          .orderBy('priority',
+                                              descending: true),
                                 ),
                                 builder: (context, snapshot) {
                                   // Customize what your widget looks like when it's loading.
