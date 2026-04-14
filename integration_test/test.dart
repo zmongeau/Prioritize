@@ -148,6 +148,7 @@ void main() async {
     await tester.pumpAndSettle(const Duration(milliseconds: 5000));
     await tester.tap(find.byKey(const ValueKey('SignUpButton_rorj')));
     await tester.pumpAndSettle(const Duration(milliseconds: 10000));
+    expect(find.byKey(const ValueKey('Text_yc5w')), findsWidgets);
   });
 
   testWidgets('User Log In', (WidgetTester tester) async {
