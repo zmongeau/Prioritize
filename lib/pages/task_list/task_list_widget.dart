@@ -492,6 +492,10 @@ class _TaskListWidgetState extends State<TaskListWidget> {
                                                 'completed',
                                                 isEqualTo: false,
                                               )
+                                              .where(
+                                                'due_date',
+                                                isEqualTo: taskDueDatesItem,
+                                              )
                                               .orderBy('priority',
                                                   descending: true),
                                     ),
