@@ -530,23 +530,26 @@ class _TaskListWidgetState extends State<TaskListWidget> {
                                           final listViewTaskDataRecord =
                                               listViewTaskDataRecordList[
                                                   listViewIndex];
-                                          return TaskWidget(
-                                            key: Key(
-                                                'Keyzhn_${listViewIndex}_of_${listViewTaskDataRecordList.length}'),
-                                            tasksDoc: listViewTaskDataRecord,
-                                            completion: () async {
-                                              logFirebaseEvent(
-                                                  'TASK_LIST_Container_zhnu8tln_CALLBACK');
-                                              logFirebaseEvent(
-                                                  'Task_backend_call');
+                                          return Container(
+                                            key: ValueKey('Task_mewj'),
+                                            child: TaskWidget(
+                                              key: Key(
+                                                  'Keyzhn_${listViewIndex}_of_${listViewTaskDataRecordList.length}'),
+                                              tasksDoc: listViewTaskDataRecord,
+                                              completion: () async {
+                                                logFirebaseEvent(
+                                                    'TASK_LIST_Container_zhnu8tln_CALLBACK');
+                                                logFirebaseEvent(
+                                                    'Task_backend_call');
 
-                                              await listViewTaskDataRecord
-                                                  .reference
-                                                  .update(
-                                                      createTaskDataRecordData(
-                                                completed: true,
-                                              ));
-                                            },
+                                                await listViewTaskDataRecord
+                                                    .reference
+                                                    .update(
+                                                        createTaskDataRecordData(
+                                                  completed: true,
+                                                ));
+                                              },
+                                            ),
                                           );
                                         },
                                       );

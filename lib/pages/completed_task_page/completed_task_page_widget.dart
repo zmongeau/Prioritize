@@ -4,6 +4,7 @@ import '/components/task_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'completed_task_page_model.dart';
 export 'completed_task_page_model.dart';
 
@@ -51,11 +52,37 @@ class _CompletedTaskPageWidgetState extends State<CompletedTaskPageWidget> {
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
         appBar: AppBar(
-          backgroundColor: FlutterFlowTheme.of(context).primary,
+          backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
           automaticallyImplyLeading: true,
+          title: Column(
+            mainAxisSize: MainAxisSize.max,
+            children: [
+              Row(
+                mainAxisSize: MainAxisSize.max,
+                children: [
+                  Text(
+                    'Completed Tasks',
+                    style: FlutterFlowTheme.of(context).bodyMedium.override(
+                          font: GoogleFonts.inter(
+                            fontWeight: FontWeight.bold,
+                            fontStyle: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .fontStyle,
+                          ),
+                          fontSize: 28.0,
+                          letterSpacing: 0.0,
+                          fontWeight: FontWeight.bold,
+                          fontStyle:
+                              FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                        ),
+                  ),
+                ],
+              ),
+            ],
+          ),
           actions: [],
           centerTitle: true,
-          elevation: 0.0,
+          elevation: 2.0,
         ),
         body: SafeArea(
           top: true,
@@ -105,11 +132,11 @@ class _CompletedTaskPageWidgetState extends State<CompletedTaskPageWidget> {
                             listViewTaskDataRecordList[listViewIndex];
                         return TaskWidget(
                           key: Key(
-                              'Key07p_${listViewIndex}_of_${listViewTaskDataRecordList.length}'),
+                              'Keybj5_${listViewIndex}_of_${listViewTaskDataRecordList.length}'),
                           tasksDoc: listViewTaskDataRecord,
                           completion: () async {
                             logFirebaseEvent(
-                                'COMPLETED_TASK_Container_07pr1t9e_CALLBA');
+                                'COMPLETED_TASK_Container_bj5910dl_CALLBA');
                             logFirebaseEvent('Task_backend_call');
 
                             await listViewTaskDataRecord.reference

@@ -177,6 +177,38 @@ void main() async {
     await tester.pumpAndSettle(const Duration(milliseconds: 5000));
     expect(find.byKey(const ValueKey('SignOutButton_koqx')), findsWidgets);
   });
+
+  testWidgets('Create Task', (WidgetTester tester) async {
+    _overrideOnError();
+    await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: 'goldenpathunittest@test.com', password: 'password');
+    await tester.pumpWidget(ChangeNotifierProvider(
+      create: (context) => FFAppState(),
+      child: MyApp(
+        entryPage: TaskListWidget(),
+      ),
+    ));
+    await GoogleFonts.pendingFonts();
+
+    await tester.tap(find.byKey(const ValueKey('Container_fma9')));
+    await tester.pump(kDoubleTapMinTime);
+    await tester.tap(find.byKey(const ValueKey('Container_fma9')));
+    await tester.pumpAndSettle(const Duration(milliseconds: 5000));
+    await tester.enterText(
+        find.byKey(const ValueKey('task_40mr')), 'Unit Title');
+    await tester.enterText(
+        find.byKey(const ValueKey('description_hugd')), 'Unit Description');
+    await tester.enterText(
+        find.byKey(const ValueKey('TextField_vp6n')), 'Unit Label');
+    await tester.tap(find.byKey(const ValueKey('Container_xa4s')));
+    await tester.pump(kDoubleTapMinTime);
+    await tester.tap(find.byKey(const ValueKey('Container_xa4s')));
+    await tester.tap(find.byKey(const ValueKey('Button_j0ds')));
+    await tester.pump(kDoubleTapMinTime);
+    await tester.tap(find.byKey(const ValueKey('Button_j0ds')));
+    await tester.pumpAndSettle(const Duration(milliseconds: 5000));
+    expect(find.byKey(const ValueKey('Task_mewj')), findsOneWidget);
+  });
 }
 
 // There are certain types of errors that can happen during tests but
