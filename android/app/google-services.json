@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "637646518118",
+    "firebase_url": "https://prioritize-v5lehr-default-rtdb.firebaseio.com",
     "project_id": "prioritize-v5lehr",
     "storage_bucket": "prioritize-v5lehr.firebasestorage.app"
   },
@@ -39,10 +40,54 @@
               "client_type": 3
             },
             {
-              "client_id": "637646518118-h5pa4rv9o6mhsd22q4gvv067vdimgdqp.apps.googleusercontent.com",
+              "client_id": "637646518118-7uvh50s8pkt230aj6g4t5sqqagg04r0e.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "com.mycompany.prioritize"
+                "bundle_id": "com.uricsc305.prioritize"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:637646518118:android:ef104f10389921bf2d3aa7",
+        "android_client_info": {
+          "package_name": "com.uricsc305.prioritize"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "637646518118-k7kvunosnt7fogdfanaka6b6d1vul7mv.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.uricsc305.prioritize",
+            "certificate_hash": "9bbb3186b2189ef16d8f272bdab59362c395cbb4"
+          }
+        },
+        {
+          "client_id": "637646518118-sf3nu98q2drtm40gp23rahbbemfni7rn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAR0ggzKaXIefYvKu3p-h1Ow17MF40HT-k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "637646518118-sf3nu98q2drtm40gp23rahbbemfni7rn.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "637646518118-7uvh50s8pkt230aj6g4t5sqqagg04r0e.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.uricsc305.prioritize"
               }
             }
           ]

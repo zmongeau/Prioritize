@@ -33,6 +33,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
     super.initState();
     _model = createModel(context, () => ProfilePageModel());
 
+    logFirebaseEvent('screen_view', parameters: {'screen_name': 'ProfilePage'});
     _model.nameTextController ??= TextEditingController();
     _model.nameFocusNode ??= FocusNode();
 
@@ -115,6 +116,9 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                           hoverColor: Colors.transparent,
                           highlightColor: Colors.transparent,
                           onTap: () async {
+                            logFirebaseEvent(
+                                'PROFILE_PAGE_PAGE_Stack_3cyfo0m1_ON_TAP');
+                            logFirebaseEvent('Stack_upload_media_to_firebase');
                             final selectedMedia =
                                 await selectMediaWithSourceBottomSheet(
                               context: context,
@@ -168,6 +172,8 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                               }
                             }
 
+                            logFirebaseEvent('Stack_backend_call');
+
                             await currentUserReference!
                                 .update(createUserDataRecordData(
                               photoUrl: _model.uploadedFileUrl_profilePhoto,
@@ -184,10 +190,10 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                   height: 68.0,
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.only(
-                                      bottomLeft: Radius.circular(68.0),
-                                      bottomRight: Radius.circular(68.0),
                                       topLeft: Radius.circular(68.0),
                                       topRight: Radius.circular(68.0),
+                                      bottomLeft: Radius.circular(68.0),
+                                      bottomRight: Radius.circular(68.0),
                                     ),
                                     border: Border.all(
                                       width: 1.0,
@@ -213,6 +219,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                         Container(
                           width: double.infinity,
                           child: TextFormField(
+                            key: ValueKey('Name_0n7z'),
                             controller: _model.nameTextController,
                             focusNode: _model.nameFocusNode,
                             onChanged: (_) => EasyDebounce.debounce(
@@ -343,6 +350,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                         Container(
                           width: double.infinity,
                           child: TextFormField(
+                            key: ValueKey('Username_l7pi'),
                             controller: _model.usernameTextController,
                             focusNode: _model.usernameFocusNode,
                             onChanged: (_) => EasyDebounce.debounce(
@@ -473,7 +481,11 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                         Align(
                           alignment: AlignmentDirectional(0.0, 1.0),
                           child: FFButtonWidget(
+                            key: ValueKey('Birthday_ca9d'),
                             onPressed: () async {
+                              logFirebaseEvent(
+                                  'PROFILE_PAGE_PAGE_Birthday_ON_TAP');
+                              logFirebaseEvent('Birthday_date_time_picker');
                               final _datePickedDate = await showDatePicker(
                                 context: context,
                                 initialDate: getCurrentTimestamp,
@@ -589,13 +601,18 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                     Align(
                       alignment: AlignmentDirectional(0.0, 1.0),
                       child: FFButtonWidget(
+                        key: ValueKey('Submit_5rmq'),
                         onPressed: () async {
+                          logFirebaseEvent('PROFILE_PAGE_PAGE_Submit_ON_TAP');
+                          logFirebaseEvent('Submit_backend_call');
+
                           await currentUserReference!
                               .update(createUserDataRecordData(
                             displayName: _model.nameTextController.text,
                             birthdate: _model.datePicked,
                             username: _model.usernameTextController.text,
                           ));
+                          logFirebaseEvent('Submit_navigate_to');
 
                           context.pushNamed(TaskListWidget.routeName);
                         },
@@ -608,30 +625,31 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                           iconPadding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 0.0),
                           color: Color(0xFF89DC8C),
-                          textStyle: FlutterFlowTheme.of(context)
-                              .titleSmall
-                              .override(
-                                font: GoogleFonts.interTight(
-                                  fontWeight: FlutterFlowTheme.of(context)
-                                      .titleSmall
-                                      .fontWeight,
-                                  fontStyle: FlutterFlowTheme.of(context)
-                                      .titleSmall
-                                      .fontStyle,
-                                ),
-                                color: FlutterFlowTheme.of(context).primaryText,
-                                fontSize: 20.0,
-                                letterSpacing: 0.0,
-                                fontWeight: FlutterFlowTheme.of(context)
-                                    .titleSmall
-                                    .fontWeight,
-                                fontStyle: FlutterFlowTheme.of(context)
-                                    .titleSmall
-                                    .fontStyle,
-                              ),
+                          textStyle:
+                              FlutterFlowTheme.of(context).titleSmall.override(
+                                    font: GoogleFonts.interTight(
+                                      fontWeight: FlutterFlowTheme.of(context)
+                                          .titleSmall
+                                          .fontWeight,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .titleSmall
+                                          .fontStyle,
+                                    ),
+                                    color: FlutterFlowTheme.of(context)
+                                        .secondaryBackground,
+                                    fontSize: 20.0,
+                                    letterSpacing: 0.0,
+                                    fontWeight: FlutterFlowTheme.of(context)
+                                        .titleSmall
+                                        .fontWeight,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .titleSmall
+                                        .fontStyle,
+                                  ),
                           elevation: 0.0,
                           borderSide: BorderSide(
                             color: FlutterFlowTheme.of(context).primaryText,
+                            width: 1.0,
                           ),
                           borderRadius: BorderRadius.circular(24.0),
                         ),

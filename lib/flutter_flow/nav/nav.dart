@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 
 import '/auth/base_auth_user_provider.dart';
 
+import '/main.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 
@@ -70,24 +71,22 @@ class AppStateNotifier extends ChangeNotifier {
   }
 }
 
-GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
+GoRouter createRouter(AppStateNotifier appStateNotifier, [Widget? entryPage]) =>
+    GoRouter(
       initialLocation: '/',
       debugLogDiagnostics: true,
       refreshListenable: appStateNotifier,
       navigatorKey: appNavigatorKey,
-      errorBuilder: (context, state) =>
-          appStateNotifier.loggedIn ? TaskListWidget() : SignUpPageWidget(),
+      errorBuilder: (context, state) => appStateNotifier.loggedIn
+          ? entryPage ?? NavBarPage()
+          : SignUpPageWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
-          builder: (context, _) =>
-              appStateNotifier.loggedIn ? TaskListWidget() : SignUpPageWidget(),
-        ),
-        FFRoute(
-          name: TaskListWidget.routeName,
-          path: TaskListWidget.routePath,
-          builder: (context, params) => TaskListWidget(),
+          builder: (context, _) => appStateNotifier.loggedIn
+              ? entryPage ?? NavBarPage()
+              : SignUpPageWidget(),
         ),
         FFRoute(
           name: ProfilePageWidget.routeName,
@@ -103,6 +102,55 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               ParamType.bool,
             ),
           ),
+        ),
+        FFRoute(
+          name: CompletedTaskPageWidget.routeName,
+          path: CompletedTaskPageWidget.routePath,
+          builder: (context, params) => params.isEmpty
+              ? NavBarPage(initialPage: 'CompletedTaskPage')
+              : CompletedTaskPageWidget(),
+        ),
+        FFRoute(
+          name: CreateTaskWidget.routeName,
+          path: CreateTaskWidget.routePath,
+          builder: (context, params) => CreateTaskWidget(),
+        ),
+        FFRoute(
+          name: TaskListCopyWidget.routeName,
+          path: TaskListCopyWidget.routePath,
+          builder: (context, params) => TaskListCopyWidget(),
+        ),
+        FFRoute(
+          name: EditTaskWidget.routeName,
+          path: EditTaskWidget.routePath,
+          builder: (context, params) => EditTaskWidget(),
+        ),
+        FFRoute(
+          name: PasswordResetABTestWidget.routeName,
+          path: PasswordResetABTestWidget.routePath,
+          builder: (context, params) => PasswordResetABTestWidget(),
+        ),
+        FFRoute(
+          name: RatingScreenWidget.routeName,
+          path: RatingScreenWidget.routePath,
+          builder: (context, params) => RatingScreenWidget(),
+        ),
+        FFRoute(
+          name: TaskListWidget.routeName,
+          path: TaskListWidget.routePath,
+          builder: (context, params) => params.isEmpty
+              ? NavBarPage(initialPage: 'TaskList')
+              : TaskListWidget(),
+        ),
+        FFRoute(
+          name: CalendarPageWidget.routeName,
+          path: CalendarPageWidget.routePath,
+          builder: (context, params) => CalendarPageWidget(),
+        ),
+        FFRoute(
+          name: UserProfilePageWidget.routeName,
+          path: UserProfilePageWidget.routePath,
+          builder: (context, params) => UserProfilePageWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

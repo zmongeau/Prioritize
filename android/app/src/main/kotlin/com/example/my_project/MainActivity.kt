@@ -1,4 +1,4 @@
-package com.mycompany.prioritize
+package com.uricsc305.prioritize
 
 import io.flutter.embedding.android.FlutterActivity
 
