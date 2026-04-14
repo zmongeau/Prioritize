@@ -156,6 +156,7 @@ class _NavBarPageState extends State<NavBarPage> {
     final tabs = {
       'TaskList': TaskListWidget(),
       'CompletedTaskPage': CompletedTaskPageWidget(),
+      'TaskListCopy2': TaskListCopy2Widget(),
     };
     final currentIndex = tabs.keys.toList().indexOf(_currentPageName);
 
@@ -188,6 +189,13 @@ class _NavBarPageState extends State<NavBarPage> {
               size: 24.0,
             ),
             label: 'Completed',
+            tooltip: '',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.list_rounded,
+            ),
+            label: 'Home',
             tooltip: '',
           )
         ],

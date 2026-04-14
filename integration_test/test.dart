@@ -135,12 +135,16 @@ void main() async {
     await tester.enterText(
         find.byKey(const ValueKey('emailAddress_Create_c91l')),
         'robert.stevens@uri.edu');
+    await tester.pumpAndSettle(const Duration(milliseconds: 5000));
     await tester.enterText(
         find.byKey(const ValueKey('password_Create_6l5m')), 'password');
+    await tester.pumpAndSettle(const Duration(milliseconds: 5000));
     await tester.enterText(
         find.byKey(const ValueKey('passwordConfirm_fdsk')), 'password');
+    await tester.pumpAndSettle(const Duration(milliseconds: 5000));
     await tester.tap(find.byKey(const ValueKey('SignUpButton_rorj')));
     await tester.pumpAndSettle(const Duration(milliseconds: 5000));
+    expect(find.text('Profile'), findsWidgets);
   });
 
   testWidgets('User Log In', (WidgetTester tester) async {

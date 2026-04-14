@@ -13,3 +13,5 @@ export '/pages/task_list/task_list_widget.dart' show TaskListWidget;
 export '/calendar_page/calendar_page_widget.dart' show CalendarPageWidget;
 export '/pages/user_profile_page/user_profile_page_widget.dart'
     show UserProfilePageWidget;
+export '/pages/task_list_copy2/task_list_copy2_widget.dart'
+    show TaskListCopy2Widget;

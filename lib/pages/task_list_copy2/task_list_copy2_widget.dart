@@ -5,37 +5,37 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/flutter_flow/custom_functions.dart' as functions;
 import '/index.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'task_list_model.dart';
-export 'task_list_model.dart';
+import 'task_list_copy2_model.dart';
+export 'task_list_copy2_model.dart';
 
 /// FlutterFlow AI Prompt: Create a page for a tasks list with options to sort
 /// by priority and due date with the default view being a combination of
 /// both.
-class TaskListWidget extends StatefulWidget {
-  const TaskListWidget({super.key});
+class TaskListCopy2Widget extends StatefulWidget {
+  const TaskListCopy2Widget({super.key});
 
-  static String routeName = 'TaskList';
-  static String routePath = '/TaskList';
+  static String routeName = 'TaskListCopy2';
+  static String routePath = '/TaskList2';
 
   @override
-  State<TaskListWidget> createState() => _TaskListWidgetState();
+  State<TaskListCopy2Widget> createState() => _TaskListCopy2WidgetState();
 }
 
-class _TaskListWidgetState extends State<TaskListWidget> {
-  late TaskListModel _model;
+class _TaskListCopy2WidgetState extends State<TaskListCopy2Widget> {
+  late TaskListCopy2Model _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => TaskListModel());
+    _model = createModel(context, () => TaskListCopy2Model());
 
-    logFirebaseEvent('screen_view', parameters: {'screen_name': 'TaskList'});
+    logFirebaseEvent('screen_view',
+        parameters: {'screen_name': 'TaskListCopy2'});
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
@@ -79,7 +79,7 @@ class _TaskListWidgetState extends State<TaskListWidget> {
             ),
           );
         }
-        List<TaskDataRecord> taskListTaskDataRecordList = snapshot.data!;
+        List<TaskDataRecord> taskListCopy2TaskDataRecordList = snapshot.data!;
 
         return GestureDetector(
           onTap: () {
@@ -107,7 +107,6 @@ class _TaskListWidgetState extends State<TaskListWidget> {
                           Align(
                             alignment: AlignmentDirectional(1.0, 0.0),
                             child: FlutterFlowIconButton(
-                              key: ValueKey('SignOutButton_koqx'),
                               borderRadius: 8.0,
                               buttonSize: 40.0,
                               hoverIconColor:
@@ -120,7 +119,7 @@ class _TaskListWidgetState extends State<TaskListWidget> {
                               ),
                               onPressed: () async {
                                 logFirebaseEvent(
-                                    'TASK_LIST_PAGE_SignOutButton_ON_TAP');
+                                    'TASK_LIST_COPY2_SignOutButton_ON_TAP');
                                 logFirebaseEvent('SignOutButton_auth');
                                 GoRouter.of(context).prepareAuthEvent();
                                 await authManager.signOut();
@@ -153,7 +152,8 @@ class _TaskListWidgetState extends State<TaskListWidget> {
                             alignment: AlignmentDirectional(0.0, 0.0),
                             child: FFButtonWidget(
                               onPressed: () async {
-                                logFirebaseEvent('TASK_LIST_PAGE__BTN_ON_TAP');
+                                logFirebaseEvent(
+                                    'TASK_LIST_COPY2_PAGE__BTN_ON_TAP');
                                 logFirebaseEvent('Button_navigate_to');
 
                                 context
@@ -216,7 +216,7 @@ class _TaskListWidgetState extends State<TaskListWidget> {
                             highlightColor: Colors.transparent,
                             onTap: () async {
                               logFirebaseEvent(
-                                  'TASK_LIST_PAGE_Container_93srrw1y_ON_TAP');
+                                  'TASK_LIST_COPY2_Container_l3xiktrp_ON_TA');
                               logFirebaseEvent(
                                   'Container_google_analytics_event');
                               logFirebaseEvent(
@@ -230,7 +230,6 @@ class _TaskListWidgetState extends State<TaskListWidget> {
                               context.goNamed(CreateTaskWidget.routeName);
                             },
                             child: Container(
-                              key: ValueKey('Container_fma9'),
                               height: 36.0,
                               decoration: BoxDecoration(
                                 color: Color(0xFF89DC8C),
@@ -342,7 +341,7 @@ class _TaskListWidgetState extends State<TaskListWidget> {
                             highlightColor: Colors.transparent,
                             onTap: () async {
                               logFirebaseEvent(
-                                  'TASK_LIST_PAGE_Container_dm8gvehe_ON_TAP');
+                                  'TASK_LIST_COPY2_Container_5vbwkgi4_ON_TA');
                               logFirebaseEvent('Container_navigate_to');
 
                               context.goNamed(CalendarPageWidget.routeName);
@@ -420,21 +419,45 @@ class _TaskListWidgetState extends State<TaskListWidget> {
                       thickness: 1.0,
                       color: FlutterFlowTheme.of(context).alternate,
                     ),
-                    Builder(
-                      builder: (context) {
-                        final taskDueDates = functions
-                            .getUniqueDueDates(
-                                taskListTaskDataRecordList.toList())
-                            .toList();
+                    StreamBuilder<List<TaskDataRecord>>(
+                      stream: queryTaskDataRecord(
+                        queryBuilder: (taskDataRecord) => taskDataRecord
+                            .where(
+                              'user',
+                              isEqualTo: currentUserReference,
+                            )
+                            .where(
+                              'completed',
+                              isEqualTo: false,
+                            )
+                            .orderBy('due_date'),
+                      ),
+                      builder: (context, snapshot) {
+                        // Customize what your widget looks like when it's loading.
+                        if (!snapshot.hasData) {
+                          return Center(
+                            child: SizedBox(
+                              width: 50.0,
+                              height: 50.0,
+                              child: CircularProgressIndicator(
+                                valueColor: AlwaysStoppedAnimation<Color>(
+                                  FlutterFlowTheme.of(context).primary,
+                                ),
+                              ),
+                            ),
+                          );
+                        }
+                        List<TaskDataRecord> listViewTaskDataRecordList =
+                            snapshot.data!;
 
                         return ListView.builder(
                           padding: EdgeInsets.zero,
                           shrinkWrap: true,
                           scrollDirection: Axis.vertical,
-                          itemCount: taskDueDates.length,
-                          itemBuilder: (context, taskDueDatesIndex) {
-                            final taskDueDatesItem =
-                                taskDueDates[taskDueDatesIndex];
+                          itemCount: listViewTaskDataRecordList.length,
+                          itemBuilder: (context, listViewIndex) {
+                            final listViewTaskDataRecord =
+                                listViewTaskDataRecordList[listViewIndex];
                             return SingleChildScrollView(
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
@@ -453,8 +476,8 @@ class _TaskListWidgetState extends State<TaskListWidget> {
                                       child: Padding(
                                         padding: EdgeInsets.all(8.0),
                                         child: Text(
-                                          dateTimeFormat(
-                                              "MMMMEEEEd", taskDueDatesItem),
+                                          dateTimeFormat("MMMMEEEEd",
+                                              listViewTaskDataRecord.dueDate!),
                                           style: FlutterFlowTheme.of(context)
                                               .labelSmall
                                               .override(
@@ -492,6 +515,12 @@ class _TaskListWidgetState extends State<TaskListWidget> {
                                                 'completed',
                                                 isEqualTo: false,
                                               )
+                                              .where(
+                                                'due_date',
+                                                isEqualTo:
+                                                    listViewTaskDataRecord
+                                                        .dueDate,
+                                              )
                                               .orderBy('priority',
                                                   descending: true),
                                     ),
@@ -528,11 +557,11 @@ class _TaskListWidgetState extends State<TaskListWidget> {
                                                   listViewIndex];
                                           return TaskWidget(
                                             key: Key(
-                                                'Keyzhn_${listViewIndex}_of_${listViewTaskDataRecordList.length}'),
+                                                'Keyrf5_${listViewIndex}_of_${listViewTaskDataRecordList.length}'),
                                             tasksDoc: listViewTaskDataRecord,
                                             completion: () async {
                                               logFirebaseEvent(
-                                                  'TASK_LIST_Container_zhnu8tln_CALLBACK');
+                                                  'TASK_LIST_COPY2_Container_rf5864tr_CALLB');
                                               logFirebaseEvent(
                                                   'Task_backend_call');
 
