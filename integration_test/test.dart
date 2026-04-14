@@ -141,10 +141,10 @@ void main() async {
     await tester.pumpAndSettle(const Duration(milliseconds: 5000));
     await tester.enterText(
         find.byKey(const ValueKey('passwordConfirm_fdsk')), 'password');
-    await tester.pumpAndSettle(const Duration(milliseconds: 5000));
-    await tester.tap(find.byKey(const ValueKey('SignUpButton_rorj')));
+    await tester.pumpAndSettle(const Duration(milliseconds: 10000));
+    await tester.tap(find.byKey(const ValueKey('SignUpButton')));
     await tester.pump(kDoubleTapMinTime);
-    await tester.tap(find.byKey(const ValueKey('SignUpButton_rorj')));
+    await tester.tap(find.byKey(const ValueKey('SignUpButton')));
     await tester.pumpAndSettle(const Duration(milliseconds: 10000));
     expect(find.text('Profile'), findsNothing);
   });
