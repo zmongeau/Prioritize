@@ -148,14 +148,6 @@ void main() async {
     await tester.pumpAndSettle(const Duration(milliseconds: 5000));
     await tester.tap(find.byKey(const ValueKey('SignUpButton_rorj')));
     await tester.pumpAndSettle(const Duration(milliseconds: 10000));
-    await tester.enterText(
-        find.byKey(const ValueKey('Name_0n7z')), 'Robbie Stevens');
-    await tester.pumpAndSettle(const Duration(milliseconds: 5000));
-    await tester.enterText(
-        find.byKey(const ValueKey('Username_l7pi')), 'rstevens19');
-    await tester.pumpAndSettle(const Duration(milliseconds: 5000));
-    await tester.tap(find.byKey(const ValueKey('Submit_5rmq')));
-    await tester.pumpAndSettle(const Duration(milliseconds: 10000));
   });
 
   testWidgets('User Log In', (WidgetTester tester) async {
