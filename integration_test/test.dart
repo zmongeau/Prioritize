@@ -139,9 +139,19 @@ void main() async {
     await tester.enterText(
         find.byKey(const ValueKey('password_Create_6l5m')), 'password');
     await tester.pumpAndSettle(const Duration(milliseconds: 5000));
+    await tester.scrollUntilVisible(
+      find.byKey(const ValueKey('passwordConfirm_fdsk')),
+      100.0,
+      scrollable: find.byType(Scrollable),
+    );
     await tester.enterText(
         find.byKey(const ValueKey('passwordConfirm_fdsk')), 'password');
     await tester.pumpAndSettle(const Duration(milliseconds: 10000));
+    await tester.scrollUntilVisible(
+      find.byKey(const ValueKey('SignUpButton_rorj')),
+      100.0,
+      scrollable: find.byType(Scrollable),
+    );
     await tester.tap(find.byKey(const ValueKey('SignUpButton_rorj')));
     await tester.pumpAndSettle(const Duration(milliseconds: 10000));
     await tester.enterText(
