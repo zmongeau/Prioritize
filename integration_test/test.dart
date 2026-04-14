@@ -143,6 +143,8 @@ void main() async {
         find.byKey(const ValueKey('passwordConfirm_fdsk')), 'password');
     await tester.pumpAndSettle(const Duration(milliseconds: 5000));
     await tester.tap(find.byKey(const ValueKey('SignUpButton_rorj')));
+    await tester.pump(kDoubleTapMinTime);
+    await tester.tap(find.byKey(const ValueKey('SignUpButton_rorj')));
     await tester.pumpAndSettle(const Duration(milliseconds: 10000));
     expect(find.text('Profile'), findsNothing);
   });
