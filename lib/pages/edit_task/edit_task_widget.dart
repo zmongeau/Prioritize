@@ -110,6 +110,8 @@ class _EditTaskWidgetState extends State<EditTaskWidget> {
                             children: [
                               Row(
                                 mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
                                   FlutterFlowIconButton(
                                     borderRadius: 8.0,

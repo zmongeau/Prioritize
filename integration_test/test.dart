@@ -72,16 +72,16 @@ void main() async {
     await tester.pumpAndSettle(const Duration(milliseconds: 3000));
     await tester.tap(find.byKey(const ValueKey('Container_fma9')));
     await tester.enterText(
-        find.byKey(const ValueKey('task_40mr')), 'Submit 11.2');
+        find.byKey(const ValueKey('taskTitle_40mr')), 'Submit 11.2');
     await tester.enterText(
         find.byKey(const ValueKey('description_hugd')), 'Submit 11.2 on time');
     await tester.enterText(
-        find.byKey(const ValueKey('TextField_vp6n')), 'CSC305');
-    await tester.tap(find.byKey(const ValueKey('DropDown_6xvu')));
+        find.byKey(const ValueKey('labelText_vp6n')), 'CSC305');
+    await tester.tap(find.byKey(const ValueKey('PriorityDropDown_6xvu')));
     await tester.pumpAndSettle(const Duration(milliseconds: 3000));
-    await tester.tap(find.byKey(const ValueKey('DropDown_6xvu')));
+    await tester.tap(find.byKey(const ValueKey('PriorityDropDown_6xvu')));
     await tester.enterText(
-        find.byKey(const ValueKey('Container_xa4s')), '4/13/2026');
+        find.byKey(const ValueKey('DateContainer_xa4s')), '4/13/2026');
     await tester.tap(find.byKey(const ValueKey('Button_j0ds')));
     await tester.pumpAndSettle(const Duration(milliseconds: 3000));
   });
@@ -106,16 +106,16 @@ void main() async {
     await tester.tap(find.byKey(const ValueKey('Container_fma9')));
     await tester.pumpAndSettle(const Duration(milliseconds: 5000));
     await tester.enterText(
-        find.byKey(const ValueKey('task_40mr')), 'Submit 11.2');
+        find.byKey(const ValueKey('taskTitle_40mr')), 'Submit 11.2');
     await tester.pumpAndSettle(const Duration(milliseconds: 3000));
     await tester.enterText(find.byKey(const ValueKey('description_hugd')),
         'Complete 11.2 On Time');
     await tester.pumpAndSettle(const Duration(milliseconds: 3000));
     await tester.enterText(
-        find.byKey(const ValueKey('TextField_vp6n')), 'CSC305');
+        find.byKey(const ValueKey('labelText_vp6n')), 'CSC305');
     await tester.pumpAndSettle(const Duration(milliseconds: 3000));
     await tester.enterText(
-        find.byKey(const ValueKey('Container_xa4s')), '4/13/2026');
+        find.byKey(const ValueKey('DateContainer_xa4s')), '4/13/2026');
     await tester.pumpAndSettle(const Duration(milliseconds: 3000));
     await tester.tap(find.byKey(const ValueKey('Button_j0ds')));
   });
@@ -195,14 +195,14 @@ void main() async {
     await tester.tap(find.byKey(const ValueKey('Container_fma9')));
     await tester.pumpAndSettle(const Duration(milliseconds: 5000));
     await tester.enterText(
-        find.byKey(const ValueKey('task_40mr')), 'Unit Title');
+        find.byKey(const ValueKey('taskTitle_40mr')), 'Unit Title');
     await tester.enterText(
         find.byKey(const ValueKey('description_hugd')), 'Unit Description');
     await tester.enterText(
-        find.byKey(const ValueKey('TextField_vp6n')), 'Unit Label');
-    await tester.tap(find.byKey(const ValueKey('Container_xa4s')));
+        find.byKey(const ValueKey('labelText_vp6n')), 'Unit Label');
+    await tester.tap(find.byKey(const ValueKey('DateContainer_xa4s')));
     await tester.pump(kDoubleTapMinTime);
-    await tester.tap(find.byKey(const ValueKey('Container_xa4s')));
+    await tester.tap(find.byKey(const ValueKey('DateContainer_xa4s')));
     await tester.tap(find.byKey(const ValueKey('Button_j0ds')));
     await tester.pump(kDoubleTapMinTime);
     await tester.tap(find.byKey(const ValueKey('Button_j0ds')));

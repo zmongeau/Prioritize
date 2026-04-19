@@ -34,14 +34,14 @@ class _CreateTaskWidgetState extends State<CreateTaskWidget> {
     _model = createModel(context, () => CreateTaskModel());
 
     logFirebaseEvent('screen_view', parameters: {'screen_name': 'CreateTask'});
-    _model.taskTextController ??= TextEditingController();
-    _model.taskFocusNode ??= FocusNode();
+    _model.taskTitleTextController ??= TextEditingController();
+    _model.taskTitleFocusNode ??= FocusNode();
 
     _model.descriptionTextController ??= TextEditingController();
     _model.descriptionFocusNode ??= FocusNode();
 
-    _model.textController3 ??= TextEditingController();
-    _model.textFieldFocusNode ??= FocusNode();
+    _model.labelTextTextController ??= TextEditingController();
+    _model.labelTextFocusNode ??= FocusNode();
 
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
@@ -168,12 +168,11 @@ class _CreateTaskWidgetState extends State<CreateTaskWidget> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   TextFormField(
-                                    key: ValueKey('task_40mr'),
-                                    controller: _model.taskTextController,
-                                    focusNode: _model.taskFocusNode,
+                                    key: ValueKey('taskTitle_40mr'),
+                                    controller: _model.taskTitleTextController,
+                                    focusNode: _model.taskTitleFocusNode,
                                     autofocus: true,
-                                    textCapitalization:
-                                        TextCapitalization.words,
+                                    textCapitalization: TextCapitalization.none,
                                     obscureText: false,
                                     decoration: InputDecoration(
                                       labelText: 'Title...',
@@ -320,7 +319,7 @@ class _CreateTaskWidgetState extends State<CreateTaskWidget> {
                                     cursorColor:
                                         FlutterFlowTheme.of(context).primary,
                                     validator: _model
-                                        .taskTextControllerValidator
+                                        .taskTitleTextControllerValidator
                                         .asValidator(context),
                                     inputFormatters: [
                                       if (!isAndroid && !isiOS)
@@ -330,7 +329,7 @@ class _CreateTaskWidgetState extends State<CreateTaskWidget> {
                                             selection: newValue.selection,
                                             text: newValue.text
                                                 .toCapitalization(
-                                                    TextCapitalization.words),
+                                                    TextCapitalization.none),
                                           );
                                         }),
                                     ],
@@ -341,8 +340,7 @@ class _CreateTaskWidgetState extends State<CreateTaskWidget> {
                                         _model.descriptionTextController,
                                     focusNode: _model.descriptionFocusNode,
                                     autofocus: true,
-                                    textCapitalization:
-                                        TextCapitalization.words,
+                                    textCapitalization: TextCapitalization.none,
                                     obscureText: false,
                                     decoration: InputDecoration(
                                       labelText: 'Description...',
@@ -500,7 +498,7 @@ class _CreateTaskWidgetState extends State<CreateTaskWidget> {
                                             selection: newValue.selection,
                                             text: newValue.text
                                                 .toCapitalization(
-                                                    TextCapitalization.words),
+                                                    TextCapitalization.none),
                                           );
                                         }),
                                     ],
@@ -547,9 +545,10 @@ class _CreateTaskWidgetState extends State<CreateTaskWidget> {
                                     child: Container(
                                       width: 200.0,
                                       child: TextFormField(
-                                        key: ValueKey('TextField_vp6n'),
-                                        controller: _model.textController3,
-                                        focusNode: _model.textFieldFocusNode,
+                                        key: ValueKey('labelText_vp6n'),
+                                        controller:
+                                            _model.labelTextTextController,
+                                        focusNode: _model.labelTextFocusNode,
                                         autofocus: false,
                                         enabled: true,
                                         obscureText: false,
@@ -678,7 +677,7 @@ class _CreateTaskWidgetState extends State<CreateTaskWidget> {
                                                 .primaryText,
                                         enableInteractiveSelection: true,
                                         validator: _model
-                                            .textController3Validator
+                                            .labelTextTextControllerValidator
                                             .asValidator(context),
                                       ),
                                     ),
@@ -710,16 +709,16 @@ class _CreateTaskWidgetState extends State<CreateTaskWidget> {
                                         ),
                                   ),
                                   FlutterFlowDropDown<int>(
-                                    key: ValueKey('DropDown_6xvu'),
-                                    controller:
-                                        _model.dropDownValueController ??=
-                                            FormFieldController<int>(
-                                      _model.dropDownValue ??= 1,
+                                    key: ValueKey('PriorityDropDown_6xvu'),
+                                    controller: _model
+                                            .priorityDropDownValueController ??=
+                                        FormFieldController<int>(
+                                      _model.priorityDropDownValue ??= 1,
                                     ),
                                     options: List<int>.from([2, 1, 0]),
                                     optionLabels: ['High', 'Medium', 'Low'],
-                                    onChanged: (val) => safeSetState(
-                                        () => _model.dropDownValue = val),
+                                    onChanged: (val) => safeSetState(() =>
+                                        _model.priorityDropDownValue = val),
                                     height: 48.0,
                                     textStyle: FlutterFlowTheme.of(context)
                                         .bodyMedium
@@ -798,9 +797,9 @@ class _CreateTaskWidgetState extends State<CreateTaskWidget> {
                                     highlightColor: Colors.transparent,
                                     onTap: () async {
                                       logFirebaseEvent(
-                                          'CREATE_TASK_Container_ih4umw1d_ON_TAP');
+                                          'CREATE_TASK_PAGE_DateContainer_ON_TAP');
                                       logFirebaseEvent(
-                                          'Container_date_time_picker');
+                                          'DateContainer_date_time_picker');
                                       final _datePickedDate =
                                           await showDatePicker(
                                         context: context,
@@ -874,7 +873,7 @@ class _CreateTaskWidgetState extends State<CreateTaskWidget> {
                                       }
                                     },
                                     child: Container(
-                                      key: ValueKey('Container_xa4s'),
+                                      key: ValueKey('DateContainer_xa4s'),
                                       width: double.infinity,
                                       height: 48.0,
                                       decoration: BoxDecoration(
@@ -962,26 +961,45 @@ class _CreateTaskWidgetState extends State<CreateTaskWidget> {
                             .doc()
                             .set(createTaskDataRecordData(
                               user: currentUserReference,
-                              title: _model.taskTextController.text,
+                              title: _model.taskTitleTextController.text,
                               description:
                                   _model.descriptionTextController.text,
                               completed: false,
                               dueDate: _model.datePicked,
-                              priority: _model.dropDownValue,
-                              label: _model.textController3.text,
+                              priority: _model.priorityDropDownValue,
+                              label: _model.labelTextTextController.text,
                             ));
-                        logFirebaseEvent('Button_navigate_to');
+                        if ((_model.taskTitleTextController.text == '') ||
+                            (_model.descriptionTextController.text == '')) {
+                          logFirebaseEvent('Button_show_snack_bar');
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: Text(
+                                'Must fill empty fields',
+                                style: TextStyle(
+                                  color:
+                                      FlutterFlowTheme.of(context).primaryText,
+                                ),
+                              ),
+                              duration: Duration(milliseconds: 4000),
+                              backgroundColor:
+                                  FlutterFlowTheme.of(context).error,
+                            ),
+                          );
+                        } else {
+                          logFirebaseEvent('Button_navigate_to');
 
-                        context.pushNamed(TaskListWidget.routeName);
+                          context.pushNamed(TaskListWidget.routeName);
 
-                        if (valueOrDefault<bool>(
-                            currentUserDocument?.firstTask, false)) {
-                          return;
+                          if (valueOrDefault<bool>(
+                              currentUserDocument?.firstTask, false)) {
+                            return;
+                          }
+
+                          logFirebaseEvent('Button_navigate_to');
+
+                          context.goNamed(RatingScreenWidget.routeName);
                         }
-
-                        logFirebaseEvent('Button_navigate_to');
-
-                        context.goNamed(RatingScreenWidget.routeName);
                       },
                       text: 'Create',
                       options: FFButtonOptions(

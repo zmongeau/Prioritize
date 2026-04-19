@@ -102,25 +102,18 @@ class _TaskListWidgetState extends State<TaskListWidget> {
                       alignment: AlignmentDirectional(-1.0, 0.0),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Align(
                             alignment: AlignmentDirectional(1.0, 0.0),
-                            child: FlutterFlowIconButton(
-                              key: ValueKey('SignOutButton_koqx'),
-                              borderRadius: 8.0,
-                              buttonSize: 40.0,
-                              hoverIconColor:
-                                  FlutterFlowTheme.of(context).error,
-                              icon: Icon(
-                                Icons.logout,
-                                color:
-                                    FlutterFlowTheme.of(context).secondaryText,
-                                size: 24.0,
-                              ),
-                              onPressed: () async {
+                            child: InkWell(
+                              splashColor: Colors.transparent,
+                              focusColor: Colors.transparent,
+                              hoverColor: Colors.transparent,
+                              highlightColor: Colors.transparent,
+                              onLongPress: () async {
                                 logFirebaseEvent(
-                                    'TASK_LIST_PAGE_SignOutButton_ON_TAP');
+                                    'TASK_LIST_SignOutButton_ON_LONG_PRESS');
                                 logFirebaseEvent('SignOutButton_auth');
                                 GoRouter.of(context).prepareAuthEvent();
                                 await authManager.signOut();
@@ -129,6 +122,22 @@ class _TaskListWidgetState extends State<TaskListWidget> {
                                 context.goNamedAuth(SignUpPageWidget.routeName,
                                     context.mounted);
                               },
+                              child: FlutterFlowIconButton(
+                                key: ValueKey('SignOutButton_koqx'),
+                                borderRadius: 8.0,
+                                buttonSize: 40.0,
+                                hoverIconColor:
+                                    FlutterFlowTheme.of(context).error,
+                                icon: Icon(
+                                  Icons.logout,
+                                  color: FlutterFlowTheme.of(context)
+                                      .secondaryText,
+                                  size: 24.0,
+                                ),
+                                onPressed: () {
+                                  print('SignOutButton pressed ...');
+                                },
+                              ),
                             ),
                           ),
                           Text(

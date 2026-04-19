@@ -8,21 +8,21 @@ class CreateTaskModel extends FlutterFlowModel<CreateTaskWidget> {
   ///  State fields for stateful widgets in this page.
 
   final formKey = GlobalKey<FormState>();
-  // State field(s) for task widget.
-  FocusNode? taskFocusNode;
-  TextEditingController? taskTextController;
-  String? Function(BuildContext, String?)? taskTextControllerValidator;
+  // State field(s) for taskTitle widget.
+  FocusNode? taskTitleFocusNode;
+  TextEditingController? taskTitleTextController;
+  String? Function(BuildContext, String?)? taskTitleTextControllerValidator;
   // State field(s) for description widget.
   FocusNode? descriptionFocusNode;
   TextEditingController? descriptionTextController;
   String? Function(BuildContext, String?)? descriptionTextControllerValidator;
-  // State field(s) for TextField widget.
-  FocusNode? textFieldFocusNode;
-  TextEditingController? textController3;
-  String? Function(BuildContext, String?)? textController3Validator;
-  // State field(s) for DropDown widget.
-  int? dropDownValue;
-  FormFieldController<int>? dropDownValueController;
+  // State field(s) for labelText widget.
+  FocusNode? labelTextFocusNode;
+  TextEditingController? labelTextTextController;
+  String? Function(BuildContext, String?)? labelTextTextControllerValidator;
+  // State field(s) for PriorityDropDown widget.
+  int? priorityDropDownValue;
+  FormFieldController<int>? priorityDropDownValueController;
   DateTime? datePicked;
 
   @override
@@ -30,13 +30,13 @@ class CreateTaskModel extends FlutterFlowModel<CreateTaskWidget> {
 
   @override
   void dispose() {
-    taskFocusNode?.dispose();
-    taskTextController?.dispose();
+    taskTitleFocusNode?.dispose();
+    taskTitleTextController?.dispose();
 
     descriptionFocusNode?.dispose();
     descriptionTextController?.dispose();
 
-    textFieldFocusNode?.dispose();
-    textController3?.dispose();
+    labelTextFocusNode?.dispose();
+    labelTextTextController?.dispose();
   }
 }

@@ -132,10 +132,6 @@ class _TaskWidgetState extends State<TaskWidget> {
                               'TASK_Checkbox_3l6b16bx_ON_TOGGLE_OFF');
                           logFirebaseEvent('Checkbox_execute_callback');
                           await widget.completion?.call();
-                          logFirebaseEvent('Checkbox_update_app_state');
-                          FFAppState().numberCompleted =
-                              FFAppState().numberCompleted + -1;
-                          safeSetState(() {});
                         }
                       },
                       side: (functions.priorityColorDark(
@@ -283,7 +279,10 @@ class _TaskWidgetState extends State<TaskWidget> {
                               size: 14.0,
                             ),
                             Text(
-                              widget.tasksDoc!.label,
+                              valueOrDefault<String>(
+                                widget.tasksDoc?.label,
+                                'None',
+                              ),
                               style: FlutterFlowTheme.of(context)
                                   .labelSmall
                                   .override(
@@ -310,27 +309,68 @@ class _TaskWidgetState extends State<TaskWidget> {
                         ),
                       ].divide(SizedBox(width: 12.0)),
                     ),
-                    if (!widget.tasksDoc!.completed)
-                      Align(
-                        alignment: AlignmentDirectional(1.0, 1.0),
-                        child: FlutterFlowIconButton(
-                          borderRadius: 8.0,
-                          buttonSize: 40.0,
-                          hoverIconColor: FlutterFlowTheme.of(context).primary,
-                          hoverBorderColor: Color(0x00FFFFFF),
-                          icon: Icon(
-                            Icons.edit,
-                            color: Color(0xFF57636C),
-                            size: 24.0,
-                          ),
-                          onPressed: () async {
-                            logFirebaseEvent('TASK_COMP_edit_ICN_ON_TAP');
-                            logFirebaseEvent('IconButton_navigate_to');
+                    Row(
+                      mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        if (!widget.tasksDoc!.completed)
+                          Align(
+                            alignment: AlignmentDirectional(1.0, 0.0),
+                            child: FlutterFlowIconButton(
+                              borderRadius: 8.0,
+                              buttonSize: 40.0,
+                              hoverIconColor:
+                                  FlutterFlowTheme.of(context).primary,
+                              hoverBorderColor: Color(0x00FFFFFF),
+                              icon: Icon(
+                                Icons.edit,
+                                color: Color(0xFF57636C),
+                                size: 24.0,
+                              ),
+                              onPressed: () async {
+                                logFirebaseEvent('TASK_COMP_edit_ICN_ON_TAP');
+                                logFirebaseEvent('IconButton_navigate_to');
 
-                            context.pushNamed(EditTaskWidget.routeName);
-                          },
+                                context.pushNamed(EditTaskWidget.routeName);
+                              },
+                            ),
+                          ),
+                        Align(
+                          alignment: AlignmentDirectional(-1.0, 0.0),
+                          child: InkWell(
+                            splashColor: Colors.transparent,
+                            focusColor: Colors.transparent,
+                            hoverColor: Colors.transparent,
+                            highlightColor: Colors.transparent,
+                            onLongPress: () async {
+                              logFirebaseEvent(
+                                  'TASK_delete_forever_ICN_ON_LONG_PRESS');
+                              logFirebaseEvent('IconButton_backend_call');
+                              await widget.tasksDoc!.reference.delete();
+                              logFirebaseEvent('IconButton_navigate_to');
+
+                              context.goNamed(TaskListWidget.routeName);
+                            },
+                            child: FlutterFlowIconButton(
+                              borderRadius: 8.0,
+                              buttonSize: 40.0,
+                              hoverIconColor:
+                                  FlutterFlowTheme.of(context).error,
+                              icon: Icon(
+                                Icons.delete_forever,
+                                color:
+                                    FlutterFlowTheme.of(context).secondaryText,
+                                size: 24.0,
+                              ),
+                              showLoadingIndicator: true,
+                              onPressed: () {
+                                print('IconButton pressed ...');
+                              },
+                            ),
+                          ),
                         ),
-                      ),
+                      ],
+                    ),
                   ].divide(SizedBox(height: 4.0)),
                 ),
               ),

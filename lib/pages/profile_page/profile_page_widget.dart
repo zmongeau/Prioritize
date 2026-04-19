@@ -612,9 +612,28 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                             birthdate: _model.datePicked,
                             username: _model.usernameTextController.text,
                           ));
-                          logFirebaseEvent('Submit_navigate_to');
+                          if ((_model.nameTextController.text == '') ||
+                              (_model.usernameTextController.text == '')) {
+                            logFirebaseEvent('Submit_show_snack_bar');
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                content: Text(
+                                  'Fields cannot be blank',
+                                  style: TextStyle(
+                                    color: FlutterFlowTheme.of(context)
+                                        .primaryText,
+                                  ),
+                                ),
+                                duration: Duration(milliseconds: 4000),
+                                backgroundColor:
+                                    FlutterFlowTheme.of(context).error,
+                              ),
+                            );
+                          } else {
+                            logFirebaseEvent('Submit_navigate_to');
 
-                          context.pushNamed(TaskListWidget.routeName);
+                            context.pushNamed(TaskListWidget.routeName);
+                          }
                         },
                         text: 'Create Profile',
                         options: FFButtonOptions(

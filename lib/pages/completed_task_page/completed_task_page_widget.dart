@@ -59,6 +59,7 @@ class _CompletedTaskPageWidgetState extends State<CompletedTaskPageWidget> {
             children: [
               Row(
                 mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
                     'Completed Tasks',
