@@ -868,16 +868,11 @@ class _CreateTaskWidgetState extends State<CreateTaskWidget> {
                                             _datePickedDate.day,
                                           );
                                         });
-                                      } else if (_model.datePicked != null) {
-                                        safeSetState(() {
-                                          _model.datePicked =
-                                              getCurrentTimestamp;
-                                        });
+                                        logFirebaseEvent(
+                                            'DateContainer_update_app_state');
+                                        FFAppState().DateChosen = true;
+                                        safeSetState(() {});
                                       }
-                                      logFirebaseEvent(
-                                          'DateContainer_update_app_state');
-                                      FFAppState().DateChosen = true;
-                                      safeSetState(() {});
                                     },
                                     child: Container(
                                       key: ValueKey('DateContainer_xa4s'),
@@ -962,23 +957,9 @@ class _CreateTaskWidgetState extends State<CreateTaskWidget> {
                       key: ValueKey('Button_j0ds'),
                       onPressed: () async {
                         logFirebaseEvent('CREATE_TASK_PAGE_CREATE_BTN_ON_TAP');
-                        logFirebaseEvent('Button_backend_call');
-
-                        await TaskDataRecord.collection
-                            .doc()
-                            .set(createTaskDataRecordData(
-                              user: currentUserReference,
-                              title: _model.taskTitleTextController.text,
-                              description:
-                                  _model.descriptionTextController.text,
-                              completed: false,
-                              dueDate: _model.datePicked,
-                              priority: _model.priorityDropDownValue,
-                              label: _model.labelTextTextController.text,
-                            ));
                         if ((_model.taskTitleTextController.text == '') ||
                             (_model.descriptionTextController.text == '') ||
-                            (FFAppState().DateChosen == false)) {
+                            (_model.datePicked == null)) {
                           logFirebaseEvent('Button_show_snack_bar');
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(
@@ -995,6 +976,20 @@ class _CreateTaskWidgetState extends State<CreateTaskWidget> {
                             ),
                           );
                         } else {
+                          logFirebaseEvent('Button_backend_call');
+
+                          await TaskDataRecord.collection
+                              .doc()
+                              .set(createTaskDataRecordData(
+                                user: currentUserReference,
+                                title: _model.taskTitleTextController.text,
+                                description:
+                                    _model.descriptionTextController.text,
+                                completed: false,
+                                dueDate: _model.datePicked,
+                                priority: _model.priorityDropDownValue,
+                                label: _model.labelTextTextController.text,
+                              ));
                           logFirebaseEvent('Button_navigate_to');
 
                           context.pushNamed(TaskListWidget.routeName);
