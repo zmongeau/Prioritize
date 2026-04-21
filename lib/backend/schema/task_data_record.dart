@@ -50,41 +50,6 @@ class TaskDataRecord extends FirestoreRecord {
   String get label => _label ?? '';
   bool hasLabel() => _label != null;
 
-  // "amountCompleted" field.
-  int? _amountCompleted;
-  int get amountCompleted => _amountCompleted ?? 0;
-  bool hasAmountCompleted() => _amountCompleted != null;
-
-  // "email" field.
-  String? _email;
-  String get email => _email ?? '';
-  bool hasEmail() => _email != null;
-
-  // "display_name" field.
-  String? _displayName;
-  String get displayName => _displayName ?? '';
-  bool hasDisplayName() => _displayName != null;
-
-  // "photo_url" field.
-  String? _photoUrl;
-  String get photoUrl => _photoUrl ?? '';
-  bool hasPhotoUrl() => _photoUrl != null;
-
-  // "uid" field.
-  String? _uid;
-  String get uid => _uid ?? '';
-  bool hasUid() => _uid != null;
-
-  // "created_time" field.
-  DateTime? _createdTime;
-  DateTime? get createdTime => _createdTime;
-  bool hasCreatedTime() => _createdTime != null;
-
-  // "phone_number" field.
-  String? _phoneNumber;
-  String get phoneNumber => _phoneNumber ?? '';
-  bool hasPhoneNumber() => _phoneNumber != null;
-
   void _initializeFields() {
     _user = snapshotData['user'] as DocumentReference?;
     _title = snapshotData['title'] as String?;
@@ -93,13 +58,6 @@ class TaskDataRecord extends FirestoreRecord {
     _dueDate = snapshotData['due_date'] as DateTime?;
     _priority = castToType<int>(snapshotData['priority']);
     _label = snapshotData['label'] as String?;
-    _amountCompleted = castToType<int>(snapshotData['amountCompleted']);
-    _email = snapshotData['email'] as String?;
-    _displayName = snapshotData['display_name'] as String?;
-    _photoUrl = snapshotData['photo_url'] as String?;
-    _uid = snapshotData['uid'] as String?;
-    _createdTime = snapshotData['created_time'] as DateTime?;
-    _phoneNumber = snapshotData['phone_number'] as String?;
   }
 
   static CollectionReference get collection =>
@@ -144,13 +102,6 @@ Map<String, dynamic> createTaskDataRecordData({
   DateTime? dueDate,
   int? priority,
   String? label,
-  int? amountCompleted,
-  String? email,
-  String? displayName,
-  String? photoUrl,
-  String? uid,
-  DateTime? createdTime,
-  String? phoneNumber,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -161,13 +112,6 @@ Map<String, dynamic> createTaskDataRecordData({
       'due_date': dueDate,
       'priority': priority,
       'label': label,
-      'amountCompleted': amountCompleted,
-      'email': email,
-      'display_name': displayName,
-      'photo_url': photoUrl,
-      'uid': uid,
-      'created_time': createdTime,
-      'phone_number': phoneNumber,
     }.withoutNulls,
   );
 
@@ -185,14 +129,7 @@ class TaskDataRecordDocumentEquality implements Equality<TaskDataRecord> {
         e1?.completed == e2?.completed &&
         e1?.dueDate == e2?.dueDate &&
         e1?.priority == e2?.priority &&
-        e1?.label == e2?.label &&
-        e1?.amountCompleted == e2?.amountCompleted &&
-        e1?.email == e2?.email &&
-        e1?.displayName == e2?.displayName &&
-        e1?.photoUrl == e2?.photoUrl &&
-        e1?.uid == e2?.uid &&
-        e1?.createdTime == e2?.createdTime &&
-        e1?.phoneNumber == e2?.phoneNumber;
+        e1?.label == e2?.label;
   }
 
   @override
@@ -203,14 +140,7 @@ class TaskDataRecordDocumentEquality implements Equality<TaskDataRecord> {
         e?.completed,
         e?.dueDate,
         e?.priority,
-        e?.label,
-        e?.amountCompleted,
-        e?.email,
-        e?.displayName,
-        e?.photoUrl,
-        e?.uid,
-        e?.createdTime,
-        e?.phoneNumber
+        e?.label
       ]);
 
   @override

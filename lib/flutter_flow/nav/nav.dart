@@ -89,6 +89,21 @@ GoRouter createRouter(AppStateNotifier appStateNotifier, [Widget? entryPage]) =>
               : SignUpPageWidget(),
         ),
         FFRoute(
+          name: TaskListCopyWidget.routeName,
+          path: TaskListCopyWidget.routePath,
+          builder: (context, params) => TaskListCopyWidget(),
+        ),
+        FFRoute(
+          name: PasswordResetABTestWidget.routeName,
+          path: PasswordResetABTestWidget.routePath,
+          builder: (context, params) => PasswordResetABTestWidget(),
+        ),
+        FFRoute(
+          name: RatingScreenWidget.routeName,
+          path: RatingScreenWidget.routePath,
+          builder: (context, params) => RatingScreenWidget(),
+        ),
+        FFRoute(
           name: ProfilePageWidget.routeName,
           path: ProfilePageWidget.routePath,
           builder: (context, params) => ProfilePageWidget(),
@@ -111,36 +126,9 @@ GoRouter createRouter(AppStateNotifier appStateNotifier, [Widget? entryPage]) =>
               : CompletedTaskPageWidget(),
         ),
         FFRoute(
-          name: CreateTaskWidget.routeName,
-          path: CreateTaskWidget.routePath,
-          builder: (context, params) => CreateTaskWidget(),
-        ),
-        FFRoute(
-          name: TaskListCopyWidget.routeName,
-          path: TaskListCopyWidget.routePath,
-          builder: (context, params) => TaskListCopyWidget(),
-        ),
-        FFRoute(
           name: EditTaskWidget.routeName,
           path: EditTaskWidget.routePath,
           builder: (context, params) => EditTaskWidget(),
-        ),
-        FFRoute(
-          name: PasswordResetABTestWidget.routeName,
-          path: PasswordResetABTestWidget.routePath,
-          builder: (context, params) => PasswordResetABTestWidget(),
-        ),
-        FFRoute(
-          name: RatingScreenWidget.routeName,
-          path: RatingScreenWidget.routePath,
-          builder: (context, params) => RatingScreenWidget(),
-        ),
-        FFRoute(
-          name: TaskListWidget.routeName,
-          path: TaskListWidget.routePath,
-          builder: (context, params) => params.isEmpty
-              ? NavBarPage(initialPage: 'TaskList')
-              : TaskListWidget(),
         ),
         FFRoute(
           name: CalendarPageWidget.routeName,
@@ -151,6 +139,18 @@ GoRouter createRouter(AppStateNotifier appStateNotifier, [Widget? entryPage]) =>
           name: UserProfilePageWidget.routeName,
           path: UserProfilePageWidget.routePath,
           builder: (context, params) => UserProfilePageWidget(),
+        ),
+        FFRoute(
+          name: CreateTaskWidget.routeName,
+          path: CreateTaskWidget.routePath,
+          builder: (context, params) => CreateTaskWidget(),
+        ),
+        FFRoute(
+          name: TaskListWidget.routeName,
+          path: TaskListWidget.routePath,
+          builder: (context, params) => params.isEmpty
+              ? NavBarPage(initialPage: 'TaskList')
+              : TaskListWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

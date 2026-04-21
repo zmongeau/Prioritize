@@ -1,6 +1,7 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/components/task_widget.dart';
+import '/flutter_flow/flutter_flow_ad_banner.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -90,7 +91,7 @@ class _TaskListWidgetState extends State<TaskListWidget> {
             key: scaffoldKey,
             backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
             appBar: PreferredSize(
-              preferredSize: Size.fromHeight(110.0),
+              preferredSize: Size.fromHeight(140.0),
               child: AppBar(
                 backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
                 automaticallyImplyLeading: false,
@@ -98,6 +99,11 @@ class _TaskListWidgetState extends State<TaskListWidget> {
                   mainAxisSize: MainAxisSize.max,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    FlutterFlowAdBanner(
+                      width: MediaQuery.sizeOf(context).width * 1.0,
+                      height: 50.0,
+                      showsTestAd: true,
+                    ),
                     Align(
                       alignment: AlignmentDirectional(-1.0, 0.0),
                       child: Row(
@@ -217,7 +223,7 @@ class _TaskListWidgetState extends State<TaskListWidget> {
                       children: [
                         Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(
-                              6.0, 0.0, 6.0, 0.0),
+                              2.0, 0.0, 3.0, 0.0),
                           child: InkWell(
                             splashColor: Colors.transparent,
                             focusColor: Colors.transparent,
@@ -290,60 +296,77 @@ class _TaskListWidgetState extends State<TaskListWidget> {
                         ),
                         Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(
-                              6.0, 0.0, 6.0, 0.0),
-                          child: Container(
-                            height: 36.0,
-                            decoration: BoxDecoration(
-                              color: FlutterFlowTheme.of(context)
-                                  .secondaryBackground,
-                              borderRadius: BorderRadius.circular(20.0),
-                              border: Border.all(
-                                color: FlutterFlowTheme.of(context).primaryText,
-                                width: 1.0,
+                              3.0, 0.0, 3.0, 0.0),
+                          child: InkWell(
+                            splashColor: Colors.transparent,
+                            focusColor: Colors.transparent,
+                            hoverColor: Colors.transparent,
+                            highlightColor: Colors.transparent,
+                            onTap: () async {
+                              logFirebaseEvent(
+                                  'TASK_LIST_PAGE_Container_7n8fxapu_ON_TAP');
+                              logFirebaseEvent('Container_update_page_state');
+                              _model.sortMode = 'priority';
+                              safeSetState(() {});
+                            },
+                            child: Container(
+                              height: 36.0,
+                              decoration: BoxDecoration(
+                                color: !((_model.sortMode == 'dueDate') &&
+                                        (_model.sortMode != 'priority'))
+                                    ? Color(0xFFC7C7C7)
+                                    : FlutterFlowTheme.of(context)
+                                        .secondaryBackground,
+                                borderRadius: BorderRadius.circular(20.0),
+                                border: Border.all(
+                                  color:
+                                      FlutterFlowTheme.of(context).primaryText,
+                                  width: 1.0,
+                                ),
                               ),
-                            ),
-                            child: Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  6.0, 8.0, 6.0, 8.0),
-                              child: Row(
-                                mainAxisSize: MainAxisSize.max,
-                                children: [
-                                  Icon(
-                                    Icons.flag_outlined,
-                                    color: FlutterFlowTheme.of(context)
-                                        .secondaryText,
-                                    size: 14.0,
-                                  ),
-                                  Text(
-                                    'Priority',
-                                    style: FlutterFlowTheme.of(context)
-                                        .labelMedium
-                                        .override(
-                                          font: GoogleFonts.inter(
+                              child: Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    6.0, 8.0, 6.0, 8.0),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  children: [
+                                    Icon(
+                                      Icons.flag_outlined,
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryText,
+                                      size: 14.0,
+                                    ),
+                                    Text(
+                                      'Priority',
+                                      style: FlutterFlowTheme.of(context)
+                                          .labelMedium
+                                          .override(
+                                            font: GoogleFonts.inter(
+                                              fontWeight: FontWeight.w600,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .labelMedium
+                                                      .fontStyle,
+                                            ),
+                                            color: FlutterFlowTheme.of(context)
+                                                .primaryText,
+                                            letterSpacing: 0.0,
                                             fontWeight: FontWeight.w600,
                                             fontStyle:
                                                 FlutterFlowTheme.of(context)
                                                     .labelMedium
                                                     .fontStyle,
                                           ),
-                                          color: FlutterFlowTheme.of(context)
-                                              .secondaryText,
-                                          letterSpacing: 0.0,
-                                          fontWeight: FontWeight.w600,
-                                          fontStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .labelMedium
-                                                  .fontStyle,
-                                        ),
-                                  ),
-                                ].divide(SizedBox(width: 6.0)),
+                                    ),
+                                  ].divide(SizedBox(width: 6.0)),
+                                ),
                               ),
                             ),
                           ),
                         ),
                         Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(
-                              6.0, 0.0, 6.0, 0.0),
+                              3.0, 0.0, 3.0, 0.0),
                           child: InkWell(
                             splashColor: Colors.transparent,
                             focusColor: Colors.transparent,
@@ -352,15 +375,18 @@ class _TaskListWidgetState extends State<TaskListWidget> {
                             onTap: () async {
                               logFirebaseEvent(
                                   'TASK_LIST_PAGE_Container_dm8gvehe_ON_TAP');
-                              logFirebaseEvent('Container_navigate_to');
-
-                              context.goNamed(CalendarPageWidget.routeName);
+                              logFirebaseEvent('Container_update_page_state');
+                              _model.sortMode = 'dueDate';
+                              safeSetState(() {});
                             },
                             child: Container(
                               height: 36.0,
                               decoration: BoxDecoration(
-                                color: FlutterFlowTheme.of(context)
-                                    .secondaryBackground,
+                                color: (_model.sortMode == 'dueDate') &&
+                                        (_model.sortMode != 'priority')
+                                    ? Color(0xFFC7C7C7)
+                                    : FlutterFlowTheme.of(context)
+                                        .secondaryBackground,
                                 borderRadius: BorderRadius.circular(20.0),
                                 border: Border.all(
                                   color:
@@ -377,7 +403,7 @@ class _TaskListWidgetState extends State<TaskListWidget> {
                                     Icon(
                                       Icons.calendar_today_rounded,
                                       color: FlutterFlowTheme.of(context)
-                                          .secondaryText,
+                                          .primaryText,
                                       size: 14.0,
                                     ),
                                     Text(
@@ -393,7 +419,7 @@ class _TaskListWidgetState extends State<TaskListWidget> {
                                                       .fontStyle,
                                             ),
                                             color: FlutterFlowTheme.of(context)
-                                                .secondaryText,
+                                                .primaryText,
                                             letterSpacing: 0.0,
                                             fontWeight: FontWeight.w600,
                                             fontStyle:
@@ -408,13 +434,35 @@ class _TaskListWidgetState extends State<TaskListWidget> {
                             ),
                           ),
                         ),
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              3.0, 0.0, 0.0, 0.0),
+                          child: InkWell(
+                            splashColor: Colors.transparent,
+                            focusColor: Colors.transparent,
+                            hoverColor: Colors.transparent,
+                            highlightColor: Colors.transparent,
+                            onTap: () async {
+                              logFirebaseEvent(
+                                  'TASK_LIST_PAGE_Icon_7nqc5b50_ON_TAP');
+                              logFirebaseEvent('Icon_navigate_to');
+
+                              context.goNamed(CalendarPageWidget.routeName);
+                            },
+                            child: Icon(
+                              Icons.calendar_month,
+                              color: FlutterFlowTheme.of(context).primaryText,
+                              size: 36.0,
+                            ),
+                          ),
+                        ),
                       ].divide(SizedBox(width: 0.0)),
                     ),
                   ].divide(SizedBox(height: 1.0)),
                 ),
                 actions: [],
                 centerTitle: false,
-                toolbarHeight: 110.0,
+                toolbarHeight: 130.0,
               ),
             ),
             body: SafeArea(
@@ -429,45 +477,118 @@ class _TaskListWidgetState extends State<TaskListWidget> {
                       thickness: 1.0,
                       color: FlutterFlowTheme.of(context).alternate,
                     ),
-                    Builder(
-                      builder: (context) {
-                        final taskDueDates = functions
-                            .getUniqueDueDates(
-                                taskListTaskDataRecordList.toList())
-                            .toList();
+                    if (_model.sortMode == 'priority')
+                      StreamBuilder<List<TaskDataRecord>>(
+                        stream: queryTaskDataRecord(
+                          queryBuilder: (taskDataRecord) => taskDataRecord
+                              .where(
+                                'user',
+                                isEqualTo: currentUserReference,
+                              )
+                              .where(
+                                'completed',
+                                isEqualTo: false,
+                              ),
+                        ),
+                        builder: (context, snapshot) {
+                          // Customize what your widget looks like when it's loading.
+                          if (!snapshot.hasData) {
+                            return Center(
+                              child: SizedBox(
+                                width: 50.0,
+                                height: 50.0,
+                                child: CircularProgressIndicator(
+                                  valueColor: AlwaysStoppedAnimation<Color>(
+                                    FlutterFlowTheme.of(context).primary,
+                                  ),
+                                ),
+                              ),
+                            );
+                          }
+                          List<TaskDataRecord>
+                              priorityListViewTaskDataRecordList =
+                              snapshot.data!;
 
-                        return ListView.builder(
-                          padding: EdgeInsets.zero,
-                          shrinkWrap: true,
-                          scrollDirection: Axis.vertical,
-                          itemCount: taskDueDates.length,
-                          itemBuilder: (context, taskDueDatesIndex) {
-                            final taskDueDatesItem =
-                                taskDueDates[taskDueDatesIndex];
-                            return SingleChildScrollView(
-                              child: Column(
-                                mainAxisSize: MainAxisSize.max,
-                                children: [
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        16.0, 10.0, 16.0, 4.0),
-                                    child: Container(
-                                      width: double.infinity,
-                                      decoration: BoxDecoration(
-                                        color: FlutterFlowTheme.of(context)
-                                            .secondaryBackground,
-                                        borderRadius:
-                                            BorderRadius.circular(0.0),
-                                      ),
-                                      child: Padding(
-                                        padding: EdgeInsets.all(8.0),
-                                        child: Text(
-                                          dateTimeFormat(
-                                              "MMMMEEEEd", taskDueDatesItem),
-                                          style: FlutterFlowTheme.of(context)
-                                              .labelSmall
-                                              .override(
-                                                font: GoogleFonts.inter(
+                          return ListView.builder(
+                            padding: EdgeInsets.zero,
+                            shrinkWrap: true,
+                            scrollDirection: Axis.vertical,
+                            itemCount:
+                                priorityListViewTaskDataRecordList.length,
+                            itemBuilder: (context, priorityListViewIndex) {
+                              final priorityListViewTaskDataRecord =
+                                  priorityListViewTaskDataRecordList[
+                                      priorityListViewIndex];
+                              return TaskWidget(
+                                key: Key(
+                                    'Keynbu_${priorityListViewIndex}_of_${priorityListViewTaskDataRecordList.length}'),
+                                tasksDoc: priorityListViewTaskDataRecord,
+                                completion: () async {
+                                  logFirebaseEvent(
+                                      'TASK_LIST_Container_nbud00d7_CALLBACK');
+                                  logFirebaseEvent('Task_backend_call');
+
+                                  await priorityListViewTaskDataRecord.reference
+                                      .update(createTaskDataRecordData(
+                                    completed: true,
+                                  ));
+                                },
+                              );
+                            },
+                          );
+                        },
+                      ),
+                    if (_model.sortMode == 'dueDate')
+                      Builder(
+                        builder: (context) {
+                          final taskDueDates = functions
+                              .getUniqueDueDates(
+                                  taskListTaskDataRecordList.toList())
+                              .toList();
+
+                          return ListView.builder(
+                            padding: EdgeInsets.zero,
+                            shrinkWrap: true,
+                            scrollDirection: Axis.vertical,
+                            itemCount: taskDueDates.length,
+                            itemBuilder: (context, taskDueDatesIndex) {
+                              final taskDueDatesItem =
+                                  taskDueDates[taskDueDatesIndex];
+                              return SingleChildScrollView(
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.max,
+                                  children: [
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          16.0, 10.0, 16.0, 4.0),
+                                      child: Container(
+                                        width: double.infinity,
+                                        decoration: BoxDecoration(
+                                          color: FlutterFlowTheme.of(context)
+                                              .secondaryBackground,
+                                          borderRadius:
+                                              BorderRadius.circular(0.0),
+                                        ),
+                                        child: Padding(
+                                          padding: EdgeInsets.all(8.0),
+                                          child: Text(
+                                            dateTimeFormat(
+                                                "MMMMEEEEd", taskDueDatesItem),
+                                            style: FlutterFlowTheme.of(context)
+                                                .labelSmall
+                                                .override(
+                                                  font: GoogleFonts.inter(
+                                                    fontWeight: FontWeight.bold,
+                                                    fontStyle:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .labelSmall
+                                                            .fontStyle,
+                                                  ),
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .secondaryText,
+                                                  letterSpacing: 1.2,
                                                   fontWeight: FontWeight.bold,
                                                   fontStyle:
                                                       FlutterFlowTheme.of(
@@ -475,102 +596,96 @@ class _TaskListWidgetState extends State<TaskListWidget> {
                                                           .labelSmall
                                                           .fontStyle,
                                                 ),
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .secondaryText,
-                                                letterSpacing: 1.2,
-                                                fontWeight: FontWeight.bold,
-                                                fontStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .labelSmall
-                                                        .fontStyle,
-                                              ),
+                                          ),
                                         ),
                                       ),
                                     ),
-                                  ),
-                                  StreamBuilder<List<TaskDataRecord>>(
-                                    stream: queryTaskDataRecord(
-                                      queryBuilder: (taskDataRecord) =>
-                                          taskDataRecord
-                                              .where(
-                                                'user',
-                                                isEqualTo: currentUserReference,
-                                              )
-                                              .where(
-                                                'completed',
-                                                isEqualTo: false,
-                                              )
-                                              .where(
-                                                'due_date',
-                                                isEqualTo: taskDueDatesItem,
-                                              )
-                                              .orderBy('priority',
-                                                  descending: true),
-                                    ),
-                                    builder: (context, snapshot) {
-                                      // Customize what your widget looks like when it's loading.
-                                      if (!snapshot.hasData) {
-                                        return Center(
-                                          child: SizedBox(
-                                            width: 50.0,
-                                            height: 50.0,
-                                            child: CircularProgressIndicator(
-                                              valueColor:
-                                                  AlwaysStoppedAnimation<Color>(
-                                                FlutterFlowTheme.of(context)
-                                                    .primary,
+                                    StreamBuilder<List<TaskDataRecord>>(
+                                      stream: queryTaskDataRecord(
+                                        queryBuilder: (taskDataRecord) =>
+                                            taskDataRecord
+                                                .where(
+                                                  'user',
+                                                  isEqualTo:
+                                                      currentUserReference,
+                                                )
+                                                .where(
+                                                  'completed',
+                                                  isEqualTo: false,
+                                                )
+                                                .where(
+                                                  'due_date',
+                                                  isEqualTo: taskDueDatesItem,
+                                                )
+                                                .orderBy('priority',
+                                                    descending: true),
+                                      ),
+                                      builder: (context, snapshot) {
+                                        // Customize what your widget looks like when it's loading.
+                                        if (!snapshot.hasData) {
+                                          return Center(
+                                            child: SizedBox(
+                                              width: 50.0,
+                                              height: 50.0,
+                                              child: CircularProgressIndicator(
+                                                valueColor:
+                                                    AlwaysStoppedAnimation<
+                                                        Color>(
+                                                  FlutterFlowTheme.of(context)
+                                                      .primary,
+                                                ),
                                               ),
                                             ),
-                                          ),
-                                        );
-                                      }
-                                      List<TaskDataRecord>
-                                          listViewTaskDataRecordList =
-                                          snapshot.data!;
-
-                                      return ListView.builder(
-                                        padding: EdgeInsets.zero,
-                                        shrinkWrap: true,
-                                        scrollDirection: Axis.vertical,
-                                        itemCount:
-                                            listViewTaskDataRecordList.length,
-                                        itemBuilder: (context, listViewIndex) {
-                                          final listViewTaskDataRecord =
-                                              listViewTaskDataRecordList[
-                                                  listViewIndex];
-                                          return Container(
-                                            key: ValueKey('Task_mewj'),
-                                            child: TaskWidget(
-                                              key: Key(
-                                                  'Keyzhn_${listViewIndex}_of_${listViewTaskDataRecordList.length}'),
-                                              tasksDoc: listViewTaskDataRecord,
-                                              completion: () async {
-                                                logFirebaseEvent(
-                                                    'TASK_LIST_Container_zhnu8tln_CALLBACK');
-                                                logFirebaseEvent(
-                                                    'Task_backend_call');
-
-                                                await listViewTaskDataRecord
-                                                    .reference
-                                                    .update(
-                                                        createTaskDataRecordData(
-                                                  completed: true,
-                                                ));
-                                              },
-                                            ),
                                           );
-                                        },
-                                      );
-                                    },
-                                  ),
-                                ],
-                              ),
-                            );
-                          },
-                        );
-                      },
-                    ),
+                                        }
+                                        List<TaskDataRecord>
+                                            listViewTaskDataRecordList =
+                                            snapshot.data!;
+
+                                        return ListView.builder(
+                                          padding: EdgeInsets.zero,
+                                          shrinkWrap: true,
+                                          scrollDirection: Axis.vertical,
+                                          itemCount:
+                                              listViewTaskDataRecordList.length,
+                                          itemBuilder:
+                                              (context, listViewIndex) {
+                                            final listViewTaskDataRecord =
+                                                listViewTaskDataRecordList[
+                                                    listViewIndex];
+                                            return Container(
+                                              key: ValueKey('Task_mewj'),
+                                              child: TaskWidget(
+                                                key: Key(
+                                                    'Keyzhn_${listViewIndex}_of_${listViewTaskDataRecordList.length}'),
+                                                tasksDoc:
+                                                    listViewTaskDataRecord,
+                                                completion: () async {
+                                                  logFirebaseEvent(
+                                                      'TASK_LIST_Container_zhnu8tln_CALLBACK');
+                                                  logFirebaseEvent(
+                                                      'Task_backend_call');
+
+                                                  await listViewTaskDataRecord
+                                                      .reference
+                                                      .update(
+                                                          createTaskDataRecordData(
+                                                    completed: true,
+                                                  ));
+                                                },
+                                              ),
+                                            );
+                                          },
+                                        );
+                                      },
+                                    ),
+                                  ],
+                                ),
+                              );
+                            },
+                          );
+                        },
+                      ),
                   ],
                 ),
               ),

@@ -1,3 +1,4 @@
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
@@ -68,6 +69,10 @@ class _EditTaskWidgetState extends State<EditTaskWidget> {
               autovalidateMode: AutovalidateMode.disabled,
               child: StreamBuilder<List<TaskDataRecord>>(
                 stream: queryTaskDataRecord(
+                  queryBuilder: (taskDataRecord) => taskDataRecord.where(
+                    'user',
+                    isEqualTo: currentUserReference,
+                  ),
                   singleRecord: true,
                 ),
                 builder: (context, snapshot) {
@@ -189,6 +194,11 @@ class _EditTaskWidgetState extends State<EditTaskWidget> {
                               ),
                               StreamBuilder<List<TaskDataRecord>>(
                                 stream: queryTaskDataRecord(
+                                  queryBuilder: (taskDataRecord) =>
+                                      taskDataRecord.where(
+                                    'user',
+                                    isEqualTo: currentUserReference,
+                                  ),
                                   singleRecord: true,
                                 ),
                                 builder: (context, snapshot) {

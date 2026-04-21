@@ -5,6 +5,10 @@ import 'create_task_widget.dart' show CreateTaskWidget;
 import 'package:flutter/material.dart';
 
 class CreateTaskModel extends FlutterFlowModel<CreateTaskWidget> {
+  ///  Local state fields for this page.
+
+  bool dateSelected = true;
+
   ///  State fields for stateful widgets in this page.
 
   final formKey = GlobalKey<FormState>();

@@ -32,4 +32,10 @@ class FFAppState extends ChangeNotifier {
   set numberCompleted(int value) {
     _numberCompleted = value;
   }
+
+  bool _DateChosen = false;
+  bool get DateChosen => _DateChosen;
+  set DateChosen(bool value) {
+    _DateChosen = value;
+  }
 }
