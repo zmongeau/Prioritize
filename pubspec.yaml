@@ -41,7 +41,7 @@ dependencies:
   dropdown_button2: 
     git:
       url: https://github.com/FlutterFlow/dropdown_button2.git
-      ref: 9bbeb2fd68e12615251a67208eb21bc75628c02c
+      ref: 514178337dfbea442f617daed39c704b57593fc9
       path: packages/dropdown_button2
   easy_debounce: 2.0.1
   file_picker: 10.1.9

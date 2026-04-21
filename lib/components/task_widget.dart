@@ -248,7 +248,7 @@ class _TaskWidgetState extends State<TaskWidget> {
                               size: 14.0,
                             ),
                             Text(
-                              widget.tasksDoc?.dueDate != null
+                              widget.tasksDoc!.hasDueDate()
                                   ? dateTimeFormat(
                                       "MMMEd", widget.tasksDoc!.dueDate!)
                                   : 'No due date',
