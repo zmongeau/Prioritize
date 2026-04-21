@@ -248,8 +248,10 @@ class _TaskWidgetState extends State<TaskWidget> {
                               size: 14.0,
                             ),
                             Text(
-                              dateTimeFormat(
-                                  "MMMEd", widget.tasksDoc!.dueDate!),
+                              widget.tasksDoc?.dueDate != null
+                                  ? dateTimeFormat(
+                                      "MMMEd", widget.tasksDoc!.dueDate!)
+                                  : 'No due date',
                               style: FlutterFlowTheme.of(context)
                                   .labelSmall
                                   .override(
