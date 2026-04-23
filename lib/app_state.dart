@@ -26,16 +26,4 @@ class FFAppState extends ChangeNotifier {
   set forgotPasswordPressed(bool value) {
     _forgotPasswordPressed = value;
   }
-
-  int _numberCompleted = 0;
-  int get numberCompleted => _numberCompleted;
-  set numberCompleted(int value) {
-    _numberCompleted = value;
-  }
-
-  bool _DateChosen = false;
-  bool get DateChosen => _DateChosen;
-  set DateChosen(bool value) {
-    _DateChosen = value;
-  }
 }

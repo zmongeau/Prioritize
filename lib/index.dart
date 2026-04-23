@@ -11,5 +11,5 @@ export '/pages/edit_task/edit_task_widget.dart' show EditTaskWidget;
 export '/calendar_page/calendar_page_widget.dart' show CalendarPageWidget;
 export '/pages/user_profile_page/user_profile_page_widget.dart'
     show UserProfilePageWidget;
-export '/pages/create_task/create_task_widget.dart' show CreateTaskWidget;
 export '/pages/task_list/task_list_widget.dart' show TaskListWidget;
+export '/pages/create_task/create_task_widget.dart' show CreateTaskWidget;
