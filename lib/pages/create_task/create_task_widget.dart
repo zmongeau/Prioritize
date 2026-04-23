@@ -10,7 +10,6 @@ import '/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'create_task_model.dart';
 export 'create_task_model.dart';
 
@@ -56,8 +55,6 @@ class _CreateTaskWidgetState extends State<CreateTaskWidget> {
 
   @override
   Widget build(BuildContext context) {
-    context.watch<FFAppState>();
-
     return GestureDetector(
       onTap: () {
         FocusScope.of(context).unfocus();
@@ -959,6 +956,7 @@ class _CreateTaskWidgetState extends State<CreateTaskWidget> {
                         logFirebaseEvent('CREATE_TASK_PAGE_CREATE_BTN_ON_TAP');
                         if ((_model.taskTitleTextController.text == '') ||
                             (_model.descriptionTextController.text == '') ||
+                            (_model.labelTextTextController.text == '') ||
                             (_model.datePicked == null)) {
                           logFirebaseEvent('Button_show_snack_bar');
                           ScaffoldMessenger.of(context).showSnackBar(

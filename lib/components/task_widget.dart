@@ -5,9 +5,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import '/index.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'task_model.dart';
 export 'task_model.dart';
 
@@ -39,14 +37,6 @@ class _TaskWidgetState extends State<TaskWidget> {
     super.initState();
     _model = createModel(context, () => TaskModel());
 
-    // On component load action.
-    SchedulerBinding.instance.addPostFrameCallback((_) async {
-      logFirebaseEvent('TASK_COMP_Task_ON_INIT_STATE');
-      logFirebaseEvent('Task_update_app_state');
-      FFAppState().numberCompleted = FFAppState().numberCompleted + 1;
-      safeSetState(() {});
-    });
-
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
@@ -59,8 +49,6 @@ class _TaskWidgetState extends State<TaskWidget> {
 
   @override
   Widget build(BuildContext context) {
-    context.watch<FFAppState>();
-
     return Padding(
       padding: EdgeInsetsDirectional.fromSTEB(16.0, 12.0, 16.0, 12.0),
       child: Container(
@@ -123,10 +111,6 @@ class _TaskWidgetState extends State<TaskWidget> {
                               'TASK_COMP_Checkbox_3l6b16bx_ON_TOGGLE_ON');
                           logFirebaseEvent('Checkbox_execute_callback');
                           await widget.completion?.call();
-                          logFirebaseEvent('Checkbox_update_app_state');
-                          FFAppState().numberCompleted =
-                              FFAppState().numberCompleted + 1;
-                          safeSetState(() {});
                         } else {
                           logFirebaseEvent(
                               'TASK_Checkbox_3l6b16bx_ON_TOGGLE_OFF');
