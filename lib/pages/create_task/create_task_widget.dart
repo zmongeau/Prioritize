@@ -865,10 +865,11 @@ class _CreateTaskWidgetState extends State<CreateTaskWidget> {
                                             _datePickedDate.day,
                                           );
                                         });
-                                        logFirebaseEvent(
-                                            'DateContainer_update_app_state');
-                                        FFAppState().DateChosen = true;
-                                        safeSetState(() {});
+                                      } else if (_model.datePicked != null) {
+                                        safeSetState(() {
+                                          _model.datePicked =
+                                              getCurrentTimestamp;
+                                        });
                                       }
                                     },
                                     child: Container(
