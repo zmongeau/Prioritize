@@ -61,3 +61,21 @@ List<DateTime> getUniqueDueDates(List<TaskDataRecord> tasks) {
   dates.sort((a, b) => a.compareTo(b));
   return dates;
 }
+
+double taskSortScore(
+  int? priority,
+  DateTime? dueDate,
+) {
+  final p = priority ?? 0;
+  final today = DateTime.now();
+  final due = dueDate ?? today;
+  final days =
+      due.difference(DateTime(today.year, today.month, today.day)).inDays;
+
+  // Urgency: spikes as deadline approaches, stays high when overdue
+  final urgency = days <= 0
+      ? 10.0 + (-days * 2.0) // overdue: base spike + grows with how late
+      : 1.0 / days.toDouble(); // future: grows exponentially as days shrinks
+
+  return (p * 10.0) + urgency;
+}

@@ -213,7 +213,8 @@ class _CalendarPageWidgetState extends State<CalendarPageWidget>
                                     ],
                                   ),
                                   child: FlutterFlowCalendar(
-                                    color: FlutterFlowTheme.of(context).primary,
+                                    color: FlutterFlowTheme.of(context)
+                                        .mainGreenColor,
                                     iconColor: FlutterFlowTheme.of(context)
                                         .secondaryText,
                                     weekFormat: false,
