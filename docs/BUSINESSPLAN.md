@@ -1,3 +1,3 @@
 # Business Plan Lean Canvas
 
-[Link to the business plan](https://docs.google.com/presentation/d/14Vlwdz_zsWssdT3wRLAf4-AYxHlWjMMs6NA2k2Ws6To/edit?usp=sharing)
+[Link to the updated business plan](https://docs.google.com/presentation/d/1ITmp01kFIzHBi_Dntz0u-z1LRve_i0ZnP7julTnMWXY/edit?usp=sharing)
