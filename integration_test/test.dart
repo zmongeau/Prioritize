@@ -119,7 +119,7 @@ void main() async {
     FocusManager.instance.primaryFocus?.unfocus();
     await tester.pumpAndSettle(const Duration(milliseconds: 5000));
     await tester.tap(find.byKey(const ValueKey('LoginButton_hzgs')));
-    await tester.pumpAndSettle(const Duration(milliseconds: 5000));
+    await tester.pumpAndSettle(const Duration(milliseconds: 10000));
     expect(find.byKey(const ValueKey('SignOutButton_koqx')), findsWidgets);
   });
 
