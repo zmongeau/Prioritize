@@ -327,6 +327,7 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget>
                                               EdgeInsetsDirectional.fromSTEB(
                                                   12.0, 0.0, 12.0, 12.0),
                                           child: Column(
+                                            key: ValueKey('SignIn_tc28'),
                                             mainAxisSize: MainAxisSize.max,
                                             crossAxisAlignment:
                                                 CrossAxisAlignment.start,
