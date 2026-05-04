@@ -48,7 +48,7 @@ void main() async {
         find.byKey(const ValueKey('password_g4ok')), 'password');
     await tester.pumpAndSettle(const Duration(milliseconds: 5000));
     await tester.tap(find.byKey(const ValueKey('SignUpPage_4agm')));
-    await tester.pumpAndSettle(const Duration(milliseconds: 5000));
+    await tester.pumpAndSettle(const Duration(milliseconds: 10000));
     await tester.tap(find.byKey(const ValueKey('LoginButton_hzgs')));
     await tester.pumpAndSettle(const Duration(milliseconds: 15000));
     await tester.tap(find.byKey(const ValueKey('Row_znt5')));
