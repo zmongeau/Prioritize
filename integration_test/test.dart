@@ -62,9 +62,6 @@ void main() async {
     await tester.enterText(
         find.byKey(const ValueKey('labelText_vp6n')), 'CSC305');
     await tester.pumpAndSettle(const Duration(milliseconds: 3000));
-    await tester.enterText(
-        find.byKey(const ValueKey('DateContainer_xa4s')), '4/13/2026');
-    await tester.pumpAndSettle(const Duration(milliseconds: 3000));
     await tester.tap(find.byKey(const ValueKey('Button_j0ds')));
   });
 
