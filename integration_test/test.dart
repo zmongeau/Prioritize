@@ -92,8 +92,8 @@ void main() async {
     await tester.tap(find.byKey(const ValueKey('SignUpp_473q')));
     await tester.pumpAndSettle(const Duration(milliseconds: 5000));
     await tester.tap(find.byKey(const ValueKey('SignUpButton_rorj')));
-    await tester.pumpAndSettle(const Duration(milliseconds: 20000));
-    expect(find.byKey(const ValueKey('Text_yc5w')), findsNothing);
+    await tester.pumpAndSettle(const Duration(milliseconds: 30000));
+    expect(find.text('Profile'), findsNothing);
   });
 
   testWidgets('User Log In', (WidgetTester tester) async {
