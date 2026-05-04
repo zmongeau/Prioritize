@@ -79,3 +79,17 @@ double taskSortScore(
 
   return (p * 10.0) + urgency;
 }
+
+int? birthdayToAge() {
+  // a function to calculate a user's age based on their birthdate in their firestore profile
+  int? birthdayToAge(DateTime? birthdate) {
+    if (birthdate == null) return null;
+    final today = DateTime.now();
+    int age = today.year - birthdate.year;
+    if (today.month < birthdate.month ||
+        (today.month == birthdate.month && today.day < birthdate.day)) {
+      age--;
+    }
+    return age;
+  }
+}

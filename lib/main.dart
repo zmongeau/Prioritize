@@ -10,6 +10,7 @@ import 'auth/firebase_auth/auth_util.dart';
 import 'backend/firebase/firebase_config.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import 'flutter_flow/flutter_flow_util.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'index.dart';
 
 import '/flutter_flow/admob_util.dart';
@@ -163,6 +164,7 @@ class _NavBarPageState extends State<NavBarPage> {
     final tabs = {
       'TaskList': TaskListWidget(),
       'CompletedTaskPage': CompletedTaskPageWidget(),
+      'AIPage': AIPageWidget(),
     };
     final currentIndex = tabs.keys.toList().indexOf(_currentPageName);
 
@@ -195,6 +197,14 @@ class _NavBarPageState extends State<NavBarPage> {
               size: 24.0,
             ),
             label: 'Completed',
+            tooltip: '',
+          ),
+          BottomNavigationBarItem(
+            icon: FaIcon(
+              FontAwesomeIcons.robot,
+              size: 24.0,
+            ),
+            label: 'Home',
             tooltip: '',
           )
         ],

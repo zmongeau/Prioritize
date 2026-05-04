@@ -102,7 +102,7 @@ class _TaskListWidgetState extends State<TaskListWidget> {
                     FlutterFlowAdBanner(
                       width: MediaQuery.sizeOf(context).width * 1.0,
                       height: 50.0,
-                      showsTestAd: true,
+                      showsTestAd: false,
                     ),
                     Align(
                       alignment: AlignmentDirectional(-1.0, 0.0),
@@ -478,57 +478,34 @@ class _TaskListWidgetState extends State<TaskListWidget> {
                       color: FlutterFlowTheme.of(context).alternate,
                     ),
                     if (_model.sortMode == 'priority')
-                      StreamBuilder<List<TaskDataRecord>>(
-                        stream: queryTaskDataRecord(
-                          queryBuilder: (taskDataRecord) => taskDataRecord
-                              .where(
-                                'user',
-                                isEqualTo: currentUserReference,
-                              )
-                              .where(
-                                'completed',
-                                isEqualTo: false,
-                              ),
-                        ),
-                        builder: (context, snapshot) {
-                          // Customize what your widget looks like when it's loading.
-                          if (!snapshot.hasData) {
-                            return Center(
-                              child: SizedBox(
-                                width: 50.0,
-                                height: 50.0,
-                                child: CircularProgressIndicator(
-                                  valueColor: AlwaysStoppedAnimation<Color>(
-                                    FlutterFlowTheme.of(context).primary,
-                                  ),
-                                ),
-                              ),
-                            );
-                          }
-                          List<TaskDataRecord>
-                              priorityListViewTaskDataRecordList =
-                              snapshot.data!;
+                      Builder(
+                        builder: (context) {
+                          final priorityScore = taskListTaskDataRecordList
+                              .sortedList(
+                                  keyOf: (e) => functions
+                                      .taskSortScore(e.priority, e.dueDate)
+                                      .toString(),
+                                  desc: true)
+                              .toList();
 
                           return ListView.builder(
                             padding: EdgeInsets.zero,
                             shrinkWrap: true,
                             scrollDirection: Axis.vertical,
-                            itemCount:
-                                priorityListViewTaskDataRecordList.length,
-                            itemBuilder: (context, priorityListViewIndex) {
-                              final priorityListViewTaskDataRecord =
-                                  priorityListViewTaskDataRecordList[
-                                      priorityListViewIndex];
+                            itemCount: priorityScore.length,
+                            itemBuilder: (context, priorityScoreIndex) {
+                              final priorityScoreItem =
+                                  priorityScore[priorityScoreIndex];
                               return TaskWidget(
                                 key: Key(
-                                    'Keynbu_${priorityListViewIndex}_of_${priorityListViewTaskDataRecordList.length}'),
-                                tasksDoc: priorityListViewTaskDataRecord,
+                                    'Keyfzv_${priorityScoreIndex}_of_${priorityScore.length}'),
+                                tasksDoc: priorityScoreItem,
                                 completion: () async {
                                   logFirebaseEvent(
-                                      'TASK_LIST_Container_nbud00d7_CALLBACK');
+                                      'TASK_LIST_Container_fzvnmwn9_CALLBACK');
                                   logFirebaseEvent('Task_backend_call');
 
-                                  await priorityListViewTaskDataRecord.reference
+                                  await priorityScoreItem.reference
                                       .update(createTaskDataRecordData(
                                     completed: true,
                                   ));

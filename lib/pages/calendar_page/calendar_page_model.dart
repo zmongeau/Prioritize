@@ -1,37 +1,27 @@
 import '/flutter_flow/flutter_flow_calendar.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/index.dart';
 import 'calendar_page_widget.dart' show CalendarPageWidget;
 import 'package:flutter/material.dart';
 
 class CalendarPageModel extends FlutterFlowModel<CalendarPageWidget> {
+  ///  Local state fields for this page.
+
+  DateTime? selectedCalendarDate;
+
   ///  State fields for stateful widgets in this page.
 
-  // State field(s) for TabBar widget.
-  TabController? tabBarController;
-  int get tabBarCurrentIndex =>
-      tabBarController != null ? tabBarController!.index : 0;
-  int get tabBarPreviousIndex =>
-      tabBarController != null ? tabBarController!.previousIndex : 0;
-
   // State field(s) for Calendar widget.
-  DateTimeRange? calendarSelectedDay1;
-  // State field(s) for Calendar widget.
-  DateTimeRange? calendarSelectedDay2;
+  DateTimeRange? calendarSelectedDay;
 
   @override
   void initState(BuildContext context) {
-    calendarSelectedDay1 = DateTimeRange(
-      start: DateTime.now().startOfDay,
-      end: DateTime.now().endOfDay,
-    );
-    calendarSelectedDay2 = DateTimeRange(
+    calendarSelectedDay = DateTimeRange(
       start: DateTime.now().startOfDay,
       end: DateTime.now().endOfDay,
     );
   }
 
   @override
-  void dispose() {
-    tabBarController?.dispose();
-  }
+  void dispose() {}
 }

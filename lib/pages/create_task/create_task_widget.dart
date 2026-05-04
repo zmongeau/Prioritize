@@ -709,7 +709,6 @@ class _CreateTaskWidgetState extends State<CreateTaskWidget> {
                                         ),
                                   ),
                                   FlutterFlowDropDown<int>(
-                                    key: ValueKey('PriorityDropDown_6xvu'),
                                     controller: _model
                                             .priorityDropDownValueController ??=
                                         FormFieldController<int>(

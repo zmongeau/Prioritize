@@ -34,11 +34,11 @@ class _EditTaskWidgetState extends State<EditTaskWidget> {
 
     logFirebaseEvent('screen_view', parameters: {'screen_name': 'EditTask'});
 
-    _model.titleFocusNode ??= FocusNode();
+    _model.titleFieldFocusNode ??= FocusNode();
 
-    _model.detailsFocusNode ??= FocusNode();
+    _model.detailsFieldFocusNode ??= FocusNode();
 
-    _model.labelFocusNode ??= FocusNode();
+    _model.labelFieldFocusNode ??= FocusNode();
 
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
@@ -218,25 +218,27 @@ class _EditTaskWidgetState extends State<EditTaskWidget> {
                                       ),
                                     );
                                   }
-                                  List<TaskDataRecord> titleTaskDataRecordList =
+                                  List<TaskDataRecord>
+                                      titleFieldTaskDataRecordList =
                                       snapshot.data!;
                                   // Return an empty Container when the item does not exist.
                                   if (snapshot.data!.isEmpty) {
                                     return Container();
                                   }
-                                  final titleTaskDataRecord =
-                                      titleTaskDataRecordList.isNotEmpty
-                                          ? titleTaskDataRecordList.first
+                                  final titleFieldTaskDataRecord =
+                                      titleFieldTaskDataRecordList.isNotEmpty
+                                          ? titleFieldTaskDataRecordList.first
                                           : null;
 
                                   return Container(
                                     width: double.infinity,
                                     child: TextFormField(
-                                      controller: _model.titleTextController ??=
-                                          TextEditingController(
-                                        text: titleTaskDataRecord?.title,
+                                      controller:
+                                          _model.titleFieldTextController ??=
+                                              TextEditingController(
+                                        text: titleFieldTaskDataRecord?.title,
                                       ),
-                                      focusNode: _model.titleFocusNode,
+                                      focusNode: _model.titleFieldFocusNode,
                                       autofocus: false,
                                       enabled: true,
                                       obscureText: false,
@@ -354,7 +356,7 @@ class _EditTaskWidgetState extends State<EditTaskWidget> {
                                           .primaryText,
                                       enableInteractiveSelection: true,
                                       validator: _model
-                                          .titleTextControllerValidator
+                                          .titleFieldTextControllerValidator
                                           .asValidator(context),
                                     ),
                                   );
@@ -382,11 +384,12 @@ class _EditTaskWidgetState extends State<EditTaskWidget> {
                               Container(
                                 width: double.infinity,
                                 child: TextFormField(
-                                  controller: _model.detailsTextController ??=
-                                      TextEditingController(
+                                  controller:
+                                      _model.detailsFieldTextController ??=
+                                          TextEditingController(
                                     text: columnTaskDataRecord?.description,
                                   ),
-                                  focusNode: _model.detailsFocusNode,
+                                  focusNode: _model.detailsFieldFocusNode,
                                   autofocus: false,
                                   enabled: true,
                                   obscureText: false,
@@ -500,7 +503,7 @@ class _EditTaskWidgetState extends State<EditTaskWidget> {
                                       FlutterFlowTheme.of(context).primaryText,
                                   enableInteractiveSelection: true,
                                   validator: _model
-                                      .detailsTextControllerValidator
+                                      .detailsFieldTextControllerValidator
                                       .asValidator(context),
                                 ),
                               ),
@@ -526,11 +529,12 @@ class _EditTaskWidgetState extends State<EditTaskWidget> {
                               Container(
                                 width: double.infinity,
                                 child: TextFormField(
-                                  controller: _model.labelTextController ??=
-                                      TextEditingController(
+                                  controller:
+                                      _model.labelFieldTextController ??=
+                                          TextEditingController(
                                     text: columnTaskDataRecord?.label,
                                   ),
-                                  focusNode: _model.labelFocusNode,
+                                  focusNode: _model.labelFieldFocusNode,
                                   autofocus: false,
                                   enabled: true,
                                   obscureText: false,
@@ -641,7 +645,8 @@ class _EditTaskWidgetState extends State<EditTaskWidget> {
                                   cursorColor:
                                       FlutterFlowTheme.of(context).primaryText,
                                   enableInteractiveSelection: true,
-                                  validator: _model.labelTextControllerValidator
+                                  validator: _model
+                                      .labelFieldTextControllerValidator
                                       .asValidator(context),
                                 ),
                               ),
@@ -665,15 +670,16 @@ class _EditTaskWidgetState extends State<EditTaskWidget> {
                                     ),
                               ),
                               FlutterFlowDropDown<int>(
-                                controller: _model.priorityValueController ??=
-                                    FormFieldController<int>(
-                                  _model.priorityValue ??=
+                                controller:
+                                    _model.priorityFieldValueController ??=
+                                        FormFieldController<int>(
+                                  _model.priorityFieldValue ??=
                                       columnTaskDataRecord?.priority,
                                 ),
                                 options: List<int>.from([2, 1, 0]),
                                 optionLabels: ['High', 'Medium', 'Low'],
                                 onChanged: (val) => safeSetState(
-                                    () => _model.priorityValue = val),
+                                    () => _model.priorityFieldValue = val),
                                 width: double.infinity,
                                 height: 40.0,
                                 textStyle: FlutterFlowTheme.of(context)
@@ -916,14 +922,14 @@ class _EditTaskWidgetState extends State<EditTaskWidget> {
 
                                         await buttonTaskDataRecord!.reference
                                             .update(createTaskDataRecordData(
-                                          title:
-                                              _model.titleTextController.text,
-                                          description:
-                                              _model.detailsTextController.text,
+                                          title: _model
+                                              .titleFieldTextController.text,
+                                          description: _model
+                                              .detailsFieldTextController.text,
                                           dueDate: _model.datePicked,
-                                          priority: _model.priorityValue,
-                                          label:
-                                              _model.labelTextController.text,
+                                          priority: _model.priorityFieldValue,
+                                          label: _model
+                                              .labelFieldTextController.text,
                                         ));
                                         logFirebaseEvent('Button_navigate_to');
 

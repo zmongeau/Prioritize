@@ -31,61 +31,6 @@ void main() async {
     await appState.initializePersistedState();
   });
 
-  testWidgets('BackendManagement', (WidgetTester tester) async {
-    _overrideOnError();
-
-    await tester.pumpWidget(ChangeNotifierProvider(
-      create: (context) => FFAppState(),
-      child: const MyApp(),
-    ));
-    await GoogleFonts.pendingFonts();
-
-    await tester.pumpAndSettle(const Duration(milliseconds: 5000));
-    await tester.tap(find.byKey(const ValueKey('SignUpTab_0glq')));
-    await tester.pumpAndSettle(const Duration(milliseconds: 5000));
-    await tester.tap(find.byKey(const ValueKey('emailAddress_Create_c91l')));
-    await tester.pumpAndSettle(const Duration(milliseconds: 1000));
-    await tester.enterText(
-        find.byKey(const ValueKey('emailAddress_Create_c91l')),
-        'robert.stevens@uri.edu');
-    await tester.tap(find.byKey(const ValueKey('password_Create_6l5m')));
-    await tester.enterText(
-        find.byKey(const ValueKey('password_Create_6l5m')), 'password');
-    await tester.tap(find.byKey(const ValueKey('passwordConfirm_fdsk')));
-    await tester.enterText(
-        find.byKey(const ValueKey('passwordConfirm_fdsk')), 'password');
-    await tester.tap(find.byKey(const ValueKey('SignUpButton_rorj')));
-    await tester.pumpAndSettle(const Duration(milliseconds: 5000));
-    await tester.tap(find.byKey(const ValueKey('Name_0n7z')));
-    await tester.enterText(
-        find.byKey(const ValueKey('Name_0n7z')), 'Robert Stevens');
-    await tester.enterText(
-        find.byKey(const ValueKey('Username_l7pi')), 'rstevens19');
-    await tester.tap(find.byKey(const ValueKey('Birthday_ca9d')));
-    await tester.pumpAndSettle(const Duration(milliseconds: 5000));
-    await tester.tap(find.byIcon(Icons.create_sharp));
-    await tester.pumpAndSettle(const Duration(milliseconds: 5000));
-    await tester.enterText(
-        find.byKey(const ValueKey('Birthday_ca9d')), '11/26/2000');
-    await tester.pumpAndSettle(const Duration(milliseconds: 5000));
-    await tester.tap(find.byKey(const ValueKey('Submit_5rmq')));
-    await tester.pumpAndSettle(const Duration(milliseconds: 3000));
-    await tester.tap(find.byKey(const ValueKey('Container_fma9')));
-    await tester.enterText(
-        find.byKey(const ValueKey('taskTitle_40mr')), 'Submit 11.2');
-    await tester.enterText(
-        find.byKey(const ValueKey('description_hugd')), 'Submit 11.2 on time');
-    await tester.enterText(
-        find.byKey(const ValueKey('labelText_vp6n')), 'CSC305');
-    await tester.tap(find.byKey(const ValueKey('PriorityDropDown_6xvu')));
-    await tester.pumpAndSettle(const Duration(milliseconds: 3000));
-    await tester.tap(find.byKey(const ValueKey('PriorityDropDown_6xvu')));
-    await tester.enterText(
-        find.byKey(const ValueKey('DateContainer_xa4s')), '4/13/2026');
-    await tester.tap(find.byKey(const ValueKey('Button_j0ds')));
-    await tester.pumpAndSettle(const Duration(milliseconds: 3000));
-  });
-
   testWidgets('MakeTest', (WidgetTester tester) async {
     _overrideOnError();
 

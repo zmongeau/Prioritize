@@ -126,6 +126,16 @@ GoRouter createRouter(AppStateNotifier appStateNotifier, [Widget? entryPage]) =>
               : CompletedTaskPageWidget(),
         ),
         FFRoute(
+          name: UserProfilePageWidget.routeName,
+          path: UserProfilePageWidget.routePath,
+          builder: (context, params) => UserProfilePageWidget(),
+        ),
+        FFRoute(
+          name: CreateTaskWidget.routeName,
+          path: CreateTaskWidget.routePath,
+          builder: (context, params) => CreateTaskWidget(),
+        ),
+        FFRoute(
           name: EditTaskWidget.routeName,
           path: EditTaskWidget.routePath,
           builder: (context, params) => EditTaskWidget(),
@@ -136,11 +146,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier, [Widget? entryPage]) =>
           builder: (context, params) => CalendarPageWidget(),
         ),
         FFRoute(
-          name: UserProfilePageWidget.routeName,
-          path: UserProfilePageWidget.routePath,
-          builder: (context, params) => UserProfilePageWidget(),
-        ),
-        FFRoute(
           name: TaskListWidget.routeName,
           path: TaskListWidget.routePath,
           builder: (context, params) => params.isEmpty
@@ -148,9 +153,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier, [Widget? entryPage]) =>
               : TaskListWidget(),
         ),
         FFRoute(
-          name: CreateTaskWidget.routeName,
-          path: CreateTaskWidget.routePath,
-          builder: (context, params) => CreateTaskWidget(),
+          name: AIPageWidget.routeName,
+          path: AIPageWidget.routePath,
+          builder: (context, params) => params.isEmpty
+              ? NavBarPage(initialPage: 'AIPage')
+              : AIPageWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

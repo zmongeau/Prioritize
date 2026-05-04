@@ -8,21 +8,21 @@ class EditTaskModel extends FlutterFlowModel<EditTaskWidget> {
   ///  State fields for stateful widgets in this page.
 
   final formKey = GlobalKey<FormState>();
-  // State field(s) for Title widget.
-  FocusNode? titleFocusNode;
-  TextEditingController? titleTextController;
-  String? Function(BuildContext, String?)? titleTextControllerValidator;
-  // State field(s) for Details widget.
-  FocusNode? detailsFocusNode;
-  TextEditingController? detailsTextController;
-  String? Function(BuildContext, String?)? detailsTextControllerValidator;
-  // State field(s) for Label widget.
-  FocusNode? labelFocusNode;
-  TextEditingController? labelTextController;
-  String? Function(BuildContext, String?)? labelTextControllerValidator;
-  // State field(s) for Priority widget.
-  int? priorityValue;
-  FormFieldController<int>? priorityValueController;
+  // State field(s) for TitleField widget.
+  FocusNode? titleFieldFocusNode;
+  TextEditingController? titleFieldTextController;
+  String? Function(BuildContext, String?)? titleFieldTextControllerValidator;
+  // State field(s) for DetailsField widget.
+  FocusNode? detailsFieldFocusNode;
+  TextEditingController? detailsFieldTextController;
+  String? Function(BuildContext, String?)? detailsFieldTextControllerValidator;
+  // State field(s) for LabelField widget.
+  FocusNode? labelFieldFocusNode;
+  TextEditingController? labelFieldTextController;
+  String? Function(BuildContext, String?)? labelFieldTextControllerValidator;
+  // State field(s) for PriorityField widget.
+  int? priorityFieldValue;
+  FormFieldController<int>? priorityFieldValueController;
   DateTime? datePicked;
 
   @override
@@ -30,13 +30,13 @@ class EditTaskModel extends FlutterFlowModel<EditTaskWidget> {
 
   @override
   void dispose() {
-    titleFocusNode?.dispose();
-    titleTextController?.dispose();
+    titleFieldFocusNode?.dispose();
+    titleFieldTextController?.dispose();
 
-    detailsFocusNode?.dispose();
-    detailsTextController?.dispose();
+    detailsFieldFocusNode?.dispose();
+    detailsFieldTextController?.dispose();
 
-    labelFocusNode?.dispose();
-    labelTextController?.dispose();
+    labelFieldFocusNode?.dispose();
+    labelFieldTextController?.dispose();
   }
 }
