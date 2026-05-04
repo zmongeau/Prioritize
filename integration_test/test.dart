@@ -138,6 +138,7 @@ void main() async {
     ));
     await GoogleFonts.pendingFonts();
 
+    await tester.pumpAndSettle(const Duration(milliseconds: 30000));
     await tester.tap(find.byKey(const ValueKey('Container_fma9')));
     await tester.pump(kDoubleTapMinTime);
     await tester.tap(find.byKey(const ValueKey('Container_fma9')));
