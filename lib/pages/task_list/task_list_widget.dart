@@ -260,6 +260,7 @@ class _TaskListWidgetState extends State<TaskListWidget> {
                                 padding: EdgeInsetsDirectional.fromSTEB(
                                     6.0, 8.0, 6.0, 8.0),
                                 child: Row(
+                                  key: ValueKey('Row_znt5'),
                                   mainAxisSize: MainAxisSize.max,
                                   children: [
                                     Icon(
