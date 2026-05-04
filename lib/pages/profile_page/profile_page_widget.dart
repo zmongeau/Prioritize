@@ -86,6 +86,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                               child: Align(
                                 alignment: AlignmentDirectional(0.0, -1.0),
                                 child: Text(
+                                  key: ValueKey('Text_yc5w'),
                                   'Profile',
                                   textAlign: TextAlign.center,
                                   style: FlutterFlowTheme.of(context)
