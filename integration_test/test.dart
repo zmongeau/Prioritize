@@ -139,6 +139,12 @@ void main() async {
     await GoogleFonts.pendingFonts();
 
     await tester.pumpAndSettle(const Duration(milliseconds: 30000));
+    await tester.enterText(find.byKey(const ValueKey('emailAddress_dacs')),
+        'goldenpathunittest@test.com');
+    await tester.enterText(
+        find.byKey(const ValueKey('password_g4ok')), 'password');
+    await tester.tap(find.byKey(const ValueKey('LoginButton_hzgs')));
+    await tester.pumpAndSettle(const Duration(milliseconds: 15000));
     await tester.tap(find.byKey(const ValueKey('Container_fma9')));
     await tester.pump(kDoubleTapMinTime);
     await tester.tap(find.byKey(const ValueKey('Container_fma9')));
