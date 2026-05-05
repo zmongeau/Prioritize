@@ -68,6 +68,31 @@ void main() async {
     await tester.tap(find.byKey(const ValueKey('Button_j0ds')));
   });
 
+  testWidgets('SignOut', (WidgetTester tester) async {
+    _overrideOnError();
+
+    await tester.pumpWidget(ChangeNotifierProvider(
+      create: (context) => FFAppState(),
+      child: const MyApp(),
+    ));
+    await GoogleFonts.pendingFonts();
+
+    await tester.pumpAndSettle(const Duration(milliseconds: 5000));
+    await tester.enterText(find.byKey(const ValueKey('emailAddress_dacs')),
+        'robert.stevens@uri.edu');
+    await tester.pumpAndSettle(const Duration(milliseconds: 3000));
+    await tester.enterText(
+        find.byKey(const ValueKey('password_g4ok')), 'password');
+    await tester.pumpAndSettle(const Duration(milliseconds: 5000));
+    await tester.tap(find.byKey(const ValueKey('SignIn_tc28')));
+    await tester.pumpAndSettle(const Duration(milliseconds: 5000));
+    await tester.tap(find.byKey(const ValueKey('LoginButton_hzgs')));
+    await tester.pumpAndSettle(const Duration(milliseconds: 20000));
+    await tester.tap(find.byKey(const ValueKey('SignOutButton_koqx')));
+    await tester.pumpAndSettle(const Duration(milliseconds: 10000));
+    expect(find.byKey(const ValueKey('LoginButton_hzgs')), findsOneWidget);
+  });
+
   testWidgets('SignUp', (WidgetTester tester) async {
     _overrideOnError();
 
