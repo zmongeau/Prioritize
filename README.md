@@ -1,3 +1,3 @@
-## Prioritize
-# Code of Conduct
+# Prioritize
+## Code of Conduct
 This project follows the Code of Conduct established by Contributor Covenant, version 2.1, available at [https://www.contributor-covenant.org/version/2/1/code_of_conduct.html][v2.1]
