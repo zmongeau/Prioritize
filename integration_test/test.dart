@@ -123,7 +123,7 @@ void main() async {
     await tester.pumpAndSettle(const Duration(milliseconds: 5000));
     await tester.tap(find.byKey(const ValueKey('LoginButton_hzgs')));
     await tester.pumpAndSettle(const Duration(milliseconds: 10000));
-    expect(find.byKey(const ValueKey('SignOutButton_koqx')), findsNothing);
+    expect(find.byKey(const ValueKey('SignOutButton_koqx')), findsOneWidget);
   });
 
   testWidgets('Create Task', (WidgetTester tester) async {
