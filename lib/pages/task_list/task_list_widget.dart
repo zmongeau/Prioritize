@@ -239,7 +239,6 @@ class _TaskListWidgetState extends State<TaskListWidget> {
                               context.goNamed(CreateTaskWidget.routeName);
                             },
                             child: Container(
-                              key: ValueKey('Container_fma9'),
                               height: 36.0,
                               decoration: BoxDecoration(
                                 color: Color(0xFF89DC8C),

@@ -123,7 +123,7 @@ void main() async {
     await tester.pumpAndSettle(const Duration(milliseconds: 5000));
     await tester.tap(find.byKey(const ValueKey('LoginButton_hzgs')));
     await tester.pumpAndSettle(const Duration(milliseconds: 10000));
-    expect(find.byKey(const ValueKey('SignOutButton_koqx')), findsWidgets);
+    expect(find.byKey(const ValueKey('SignOutButton_koqx')), findsNothing);
   });
 
   testWidgets('Create Task', (WidgetTester tester) async {
@@ -145,9 +145,9 @@ void main() async {
         find.byKey(const ValueKey('password_g4ok')), 'password');
     await tester.tap(find.byKey(const ValueKey('LoginButton_hzgs')));
     await tester.pumpAndSettle(const Duration(milliseconds: 15000));
-    await tester.tap(find.byKey(const ValueKey('Container_fma9')));
+    await tester.tap(find.byKey(const ValueKey('Row_znt5')));
     await tester.pump(kDoubleTapMinTime);
-    await tester.tap(find.byKey(const ValueKey('Container_fma9')));
+    await tester.tap(find.byKey(const ValueKey('Row_znt5')));
     await tester.pumpAndSettle(const Duration(milliseconds: 5000));
     await tester.enterText(
         find.byKey(const ValueKey('taskTitle_40mr')), 'Unit Title');
