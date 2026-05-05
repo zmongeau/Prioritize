@@ -130,6 +130,7 @@ class _CalendarPageWidgetState extends State<CalendarPageWidget> {
             mainAxisSize: MainAxisSize.max,
             children: [
               FlutterFlowCalendar(
+                key: ValueKey('Calendar_erg4'),
                 color: FlutterFlowTheme.of(context).mainGreenColor,
                 iconColor: FlutterFlowTheme.of(context).secondaryText,
                 weekFormat: false,

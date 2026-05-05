@@ -68,7 +68,7 @@ void main() async {
     await tester.tap(find.byKey(const ValueKey('Button_j0ds')));
   });
 
-  testWidgets('SignOut', (WidgetTester tester) async {
+  testWidgets('ViewCalendar', (WidgetTester tester) async {
     _overrideOnError();
 
     await tester.pumpWidget(ChangeNotifierProvider(
@@ -88,9 +88,9 @@ void main() async {
     await tester.pumpAndSettle(const Duration(milliseconds: 5000));
     await tester.tap(find.byKey(const ValueKey('LoginButton_hzgs')));
     await tester.pumpAndSettle(const Duration(milliseconds: 20000));
-    await tester.tap(find.byKey(const ValueKey('SignOutButton_koqx')));
+    await tester.tap(find.byKey(const ValueKey('Icon_6ji8')));
     await tester.pumpAndSettle(const Duration(milliseconds: 20000));
-    expect(find.byKey(const ValueKey('LoginButton_hzgs')), findsOneWidget);
+    expect(find.byKey(const ValueKey('Calendar_erg4')), findsOneWidget);
   });
 
   testWidgets('SignUp', (WidgetTester tester) async {

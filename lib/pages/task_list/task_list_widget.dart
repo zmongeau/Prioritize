@@ -444,6 +444,7 @@ class _TaskListWidgetState extends State<TaskListWidget> {
                               context.goNamed(CalendarPageWidget.routeName);
                             },
                             child: Icon(
+                              key: ValueKey('Icon_6ji8'),
                               Icons.calendar_month,
                               color: FlutterFlowTheme.of(context).primaryText,
                               size: 36.0,
